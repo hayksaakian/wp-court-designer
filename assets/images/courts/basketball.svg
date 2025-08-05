@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 500" width="940" height="500">
+  <!-- Border -->
+  <rect id="border" x="0" y="0" width="940" height="500" fill="#228B22" stroke="none"/>
+  
+  <!-- Court -->
+  <rect id="court" x="20" y="25" width="900" height="450" fill="#D2691E" stroke="white" stroke-width="2"/>
+  
+  <!-- 3-Point Areas -->
+  <g id="threePointArea">
+    <!-- Left 3-point area -->
+    <path d="M 20 100 A 237 237 0 0 0 20 375 L 20 100 Z" fill="#FF6600" stroke="white" stroke-width="2"/>
+    <!-- Right 3-point area -->
+    <path d="M 920 100 A 237 237 0 0 1 920 375 L 920 100 Z" fill="#FF6600" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Keys (paint areas) -->
+  <g id="key">
+    <!-- Left key -->
+    <rect x="20" y="170" width="190" height="160" fill="#0066CC" stroke="white" stroke-width="2"/>
+    <!-- Right key -->
+    <rect x="730" y="170" width="190" height="160" fill="#0066CC" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Top of Key circles -->
+  <g id="topOfKey">
+    <!-- Left top of key -->
+    <circle cx="210" cy="250" r="60" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M 210 190 A 60 60 0 0 0 210 310" fill="#663399" stroke="white" stroke-width="2"/>
+    <!-- Right top of key -->
+    <circle cx="730" cy="250" r="60" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M 730 190 A 60 60 0 0 1 730 310" fill="#663399" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Center Court Circle -->
+  <circle id="centerCourtCircle" cx="470" cy="250" r="60" fill="#800000" stroke="white" stroke-width="2"/>
+  
+  <!-- Court lines -->
+  <g stroke="white" stroke-width="2" fill="none">
+    <!-- Center line -->
+    <line x1="470" y1="25" x2="470" y2="475"/>
+    
+    <!-- Free throw lines -->
+    <line x1="210" y1="170" x2="210" y2="330"/>
+    <line x1="730" y1="170" x2="730" y2="330"/>
+    
+    <!-- Baskets -->
+    <circle cx="67" cy="250" r="8" fill="orange"/>
+    <circle cx="873" cy="250" r="8" fill="orange"/>
+  </g>
+</svg>

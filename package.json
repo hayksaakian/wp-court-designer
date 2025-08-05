@@ -1,0 +1,36 @@
+{
+  "name": "wp-court-designer",
+  "version": "1.0.0",
+  "description": "Interactive court designer for tennis, basketball, and pickleball courts with customizable colors",
+  "main": "court-designer.php",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js assets/js",
+    "lint:css": "wp-scripts lint-style assets/css",
+    "zip": "zip -r wp-court-designer.zip . -x 'node_modules/*' '.git/*' '*.log' '.DS_Store' 'package-lock.json'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hayksaakian/wp-court-designer.git"
+  },
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "court",
+    "designer",
+    "tennis",
+    "basketball",
+    "pickleball",
+    "sports"
+  ],
+  "author": "Hayk Saakian",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/hayksaakian/wp-court-designer/issues"
+  },
+  "homepage": "https://github.com/hayksaakian/wp-court-designer#readme",
+  "devDependencies": {
+    "@wordpress/scripts": "^26.0.0"
+  }
+}

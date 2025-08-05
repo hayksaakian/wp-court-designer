@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <!-- Border (outer area) -->
+  <rect id="border" x="0" y="0" width="800" height="400" fill="#228B22" stroke="none"/>
+  
+  <!-- Court (inner play area) -->
+  <rect id="court" x="40" y="40" width="720" height="320" fill="#0066CC" stroke="white" stroke-width="2"/>
+  
+  <!-- Court lines -->
+  <g stroke="white" stroke-width="3" fill="none">
+    <!-- Singles sidelines -->
+    <line x1="100" y1="40" x2="100" y2="360"/>
+    <line x1="700" y1="40" x2="700" y2="360"/>
+    
+    <!-- Service lines -->
+    <line x1="100" y1="140" x2="700" y2="140"/>
+    <line x1="100" y1="260" x2="700" y2="260"/>
+    
+    <!-- Center service line -->
+    <line x1="400" y1="140" x2="400" y2="260"/>
+    
+    <!-- Baseline -->
+    <line x1="40" y1="200" x2="760" y2="200"/>
+  </g>
+  
+  <!-- Net post indicators -->
+  <circle cx="40" cy="200" r="3" fill="white"/>
+  <circle cx="760" cy="200" r="3" fill="white"/>
+</svg>

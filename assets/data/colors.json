@@ -1,0 +1,88 @@
+[
+    {
+        "name": "Ice Blue",
+        "hex": "#B8E0FF",
+        "leed": {"sri": 62, "credit": true}
+    },
+    {
+        "name": "Light Blue",
+        "hex": "#87CEEB",
+        "leed": null
+    },
+    {
+        "name": "Blue",
+        "hex": "#0066CC",
+        "leed": null
+    },
+    {
+        "name": "Light Green",
+        "hex": "#90EE90",
+        "leed": {"sri": 31, "credit": true}
+    },
+    {
+        "name": "Forest Green",
+        "hex": "#228B22",
+        "leed": null
+    },
+    {
+        "name": "Dark Green",
+        "hex": "#013220",
+        "leed": null
+    },
+    {
+        "name": "Tournament Purple",
+        "hex": "#663399",
+        "leed": null
+    },
+    {
+        "name": "Black",
+        "hex": "#000000",
+        "leed": null
+    },
+    {
+        "name": "Maroon",
+        "hex": "#800000",
+        "leed": null
+    },
+    {
+        "name": "Red",
+        "hex": "#CC0000",
+        "leed": {"sri": 36, "credit": true}
+    },
+    {
+        "name": "Brite Red",
+        "hex": "#FF0000",
+        "leed": null
+    },
+    {
+        "name": "Orange",
+        "hex": "#FF6600",
+        "leed": null
+    },
+    {
+        "name": "Yellow",
+        "hex": "#FFD700",
+        "leed": null
+    },
+    {
+        "name": "Sandstone",
+        "hex": "#C8B88B",
+        "leed": {"sri": 46, "credit": true}
+    },
+    {
+        "name": "Beige",
+        "hex": "#F5F5DC",
+        "leed": null
+    },
+    {
+        "name": "Dove Gray",
+        "hex": "#999999",
+        "leed": {"sri": 33, "credit": true}
+    },
+    {
+        "name": "Brown",
+        "hex": "#654321",
+        "leed": null,
+        "note": "ColorPlus fusion blend (50% Maroon + 50% Light Green)"
+    }
+]
