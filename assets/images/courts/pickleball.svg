@@ -1,31 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 200" width="440" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 320" width="490" height="320">
   <!-- Border -->
-  <rect id="border" x="0" y="0" width="440" height="200" fill="#228B22" stroke="none"/>
+  <rect id="border" x="0" y="0" width="490" height="320" fill="#228B22" stroke="none"/>
   
-  <!-- Court -->
-  <rect id="court" x="20" y="10" width="400" height="180" fill="#0066CC" stroke="white" stroke-width="2"/>
+  <!-- Court (44 x 20 feet = 440 x 200 units) -->
+  <rect id="court" x="25" y="25" width="440" height="200" fill="#0066CC" stroke="white" stroke-width="2"/>
   
-  <!-- Non-Volley Zones (Kitchen) -->
+  <!-- Non-Volley Zones (Kitchen) - 7 feet from net = 70 units -->
   <g id="nonVolleyZone">
     <!-- Left non-volley zone -->
-    <rect x="20" y="10" width="70" height="180" fill="#FFD700" stroke="white" stroke-width="2"/>
+    <rect x="25" y="25" width="70" height="200" fill="#FFD700" stroke="white" stroke-width="2"/>
     <!-- Right non-volley zone -->
-    <rect x="350" y="10" width="70" height="180" fill="#FFD700" stroke="white" stroke-width="2"/>
+    <rect x="395" y="25" width="70" height="200" fill="#FFD700" stroke="white" stroke-width="2"/>
   </g>
   
   <!-- Court lines -->
   <g stroke="white" stroke-width="2" fill="none">
-    <!-- Center line -->
-    <line x1="220" y1="10" x2="220" y2="190"/>
+    <!-- Net line (center at 22 feet = 220 units) -->
+    <line x1="245" y1="25" x2="245" y2="225" stroke-width="3" stroke-dasharray="5,5" opacity="0.7"/>
     
-    <!-- Service center lines -->
-    <line x1="90" y1="100" x2="350" y2="100"/>
+    <!-- Service center line (divides service areas) -->
+    <line x1="95" y1="125" x2="395" y2="125"/>
     
-    <!-- Net line -->
-    <line x1="220" y1="0" x2="220" y2="200" stroke-dasharray="5,5" opacity="0.5"/>
+    <!-- Baseline extensions for center marks -->
+    <line x1="25" y1="125" x2="35" y2="125" stroke-width="2"/>
+    <line x1="455" y1="125" x2="465" y2="125" stroke-width="2"/>
   </g>
   
   <!-- Net posts -->
-  <circle cx="20" cy="100" r="2" fill="white"/>
-  <circle cx="420" cy="100" r="2" fill="white"/>
+  <circle cx="245" cy="25" r="3" fill="white"/>
+  <circle cx="245" cy="225" r="3" fill="white"/>
+  
+  <!-- Logo area below court -->
+  <g id="logoArea">
+    <rect id="logoBackground" x="0" y="250" width="490" height="70" fill="#228B22"/>
+    <image id="courtLogo" x="170" y="260" width="150" height="45" href="" preserveAspectRatio="xMidYMid meet"/>
+  </g>
 </svg>

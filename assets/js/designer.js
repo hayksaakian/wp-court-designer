@@ -8,6 +8,7 @@
             this.colors = window.courtDesignerData.colors;
             this.strings = window.courtDesignerData.strings;
             this.pluginUrl = window.courtDesignerData.pluginUrl;
+            this.logoUrl = null;
             
             this.areas = this.getAreasForCourt(this.courtType);
             this.currentArea = this.areas[0];
@@ -34,7 +35,7 @@
         }
         
         loadSVG() {
-            const svgUrl = `${this.pluginUrl}assets/images/courts/${this.courtType}.svg`;
+            const svgUrl = `${this.pluginUrl}assets/images/courts/${this.courtType}.svg?v=${Date.now()}`;
             const previewContainer = this.container.querySelector('.court-designer-preview');
             
             fetch(svgUrl)
@@ -43,6 +44,7 @@
                     previewContainer.innerHTML = svgText;
                     this.svgElement = previewContainer.querySelector('svg');
                     this.applyColors();
+                    this.updateLogo();
                 })
                 .catch(error => {
                     console.error('Error loading SVG:', error);
@@ -84,6 +86,22 @@
             if (downloadBtn) {
                 downloadBtn.addEventListener('click', () => {
                     this.downloadDesign();
+                });
+            }
+            
+            // Logo upload
+            const logoInput = this.container.querySelector('#logo-upload');
+            if (logoInput) {
+                logoInput.addEventListener('change', (e) => {
+                    this.handleLogoUpload(e);
+                });
+            }
+            
+            // Remove logo button
+            const removeLogoBtn = this.container.querySelector('.btn-remove-logo');
+            if (removeLogoBtn) {
+                removeLogoBtn.addEventListener('click', () => {
+                    this.removeLogo();
                 });
             }
         }
@@ -131,6 +149,12 @@
                     }
                 }
             });
+            
+            // Update logo background to match border color
+            const logoBackground = this.svgElement.querySelector('#logoBackground');
+            if (logoBackground && this.colorState.border) {
+                logoBackground.setAttribute('fill', this.colorState.border);
+            }
         }
         
         changeCourtType(newType) {
@@ -195,6 +219,57 @@
             };
             
             img.src = svgUrl;
+        }
+        
+        handleLogoUpload(event) {
+            const file = event.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.logoUrl = e.target.result;
+                    this.updateLogo();
+                    
+                    // Show remove button
+                    const removeBtn = this.container.querySelector('.btn-remove-logo');
+                    if (removeBtn) {
+                        removeBtn.style.display = 'inline-block';
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        updateLogo() {
+            if (!this.svgElement) return;
+            
+            const logoElement = this.svgElement.querySelector('#courtLogo');
+            if (logoElement) {
+                if (this.logoUrl) {
+                    logoElement.setAttribute('href', this.logoUrl);
+                    logoElement.style.display = 'block';
+                } else {
+                    // Use placeholder logo
+                    logoElement.setAttribute('href', this.pluginUrl + 'assets/images/placeholder-logo.svg');
+                    logoElement.style.display = 'block';
+                }
+            }
+        }
+        
+        removeLogo() {
+            this.logoUrl = null;
+            this.updateLogo();
+            
+            // Reset file input
+            const logoInput = this.container.querySelector('#logo-upload');
+            if (logoInput) {
+                logoInput.value = '';
+            }
+            
+            // Hide remove button
+            const removeBtn = this.container.querySelector('.btn-remove-logo');
+            if (removeBtn) {
+                removeBtn.style.display = 'none';
+            }
         }
     }
     

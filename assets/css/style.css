@@ -233,6 +233,41 @@
     color: #856404;
 }
 
+.logo-upload-section {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.logo-section-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.logo-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-upload {
+    position: relative;
+    cursor: pointer;
+}
+
+.btn-upload input[type="file"] {
+    position: absolute;
+    left: -9999px;
+}
+
+.logo-note {
+    font-size: 12px;
+    color: #666;
+    margin: 5px 0;
+}
+
 @media (max-width: 768px) {
     .court-designer-container {
         flex-direction: column;

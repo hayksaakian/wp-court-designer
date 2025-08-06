@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basketball Court Test</title>
+    <style>
+        body { margin: 20px; background: #f0f0f0; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        svg { border: 1px solid #ccc; background: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Basketball Court SVG Test</h1>
+        <div id="court"></div>
+    </div>
+    <script>
+        fetch('assets/images/courts/basketball.svg')
+            .then(r => r.text())
+            .then(svg => {
+                document.getElementById('court').innerHTML = svg;
+                // Test colors
+                document.querySelector('#border').setAttribute('fill', '#87CEEB');
+                document.querySelector('#court').setAttribute('fill', '#B8E0FF');
+                document.querySelector('#threePointArea').querySelectorAll('*').forEach(el => {
+                    if(el.hasAttribute('fill')) el.setAttribute('fill', '#0066CC');
+                });
+                document.querySelector('#key').querySelectorAll('*').forEach(el => {
+                    if(el.hasAttribute('fill')) el.setAttribute('fill', '#0066CC');
+                });
+                document.querySelector('#centerCourtCircle').setAttribute('fill', '#800000');
+            });
+    </script>
+</body>
+</html>

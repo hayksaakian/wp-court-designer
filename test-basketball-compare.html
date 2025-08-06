@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basketball Court Comparison</title>
+    <style>
+        body { 
+            margin: 20px; 
+            background: #f0f0f0; 
+            font-family: Arial, sans-serif;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .court-wrapper {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        svg { 
+            width: 100%;
+            height: auto;
+            max-width: 940px;
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .notes {
+            background: #fffbf0;
+            border-left: 4px solid #ffa500;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Basketball Court SVG Comparison</h1>
+        
+        <div class="court-wrapper">
+            <h2>Our Current Basketball Court</h2>
+            <div id="court"></div>
+            <div class="notes">
+                <strong>Current Implementation:</strong>
+                <ul>
+                    <li>Border: Yellow (#FFD700)</li>
+                    <li>Court: Red (#CC0000)</li>
+                    <li>3-Point Areas: Dark Blue (#013220) - Corner rectangles</li>
+                    <li>Key: Light Blue (#87CEEB)</li>
+                    <li>Top of Key: Brown (#654321)</li>
+                    <li>Center Circle: Green (#228B22)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="court-wrapper">
+            <h2>Competitor Reference (SportMaster)</h2>
+            <div class="notes">
+                <strong>Their Implementation:</strong>
+                <ul>
+                    <li>Border: Yellow/Gold</li>
+                    <li>Court: Red/Orange</li>
+                    <li>3-Point Areas: Dark Blue - Areas OUTSIDE the arc line</li>
+                    <li>Key: Light Blue rectangles</li>
+                    <li>Top of Key: Brown/Tan semicircles</li>
+                    <li>Center Circle: Green</li>
+                </ul>
+                <p><strong>Key Difference:</strong> The 3-point area is the space OUTSIDE the 3-point arc (between the arc and the sidelines), not just corner rectangles.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Load and color our SVG
+        fetch('assets/images/courts/basketball.svg')
+            .then(r => r.text())
+            .then(svg => {
+                document.getElementById('court').innerHTML = svg;
+                
+                // Apply test colors to match the reference
+                document.querySelector('#border').setAttribute('fill', '#FFD700'); // Yellow
+                document.querySelector('#court').setAttribute('fill', '#CC0000'); // Red
+                
+                // 3-point areas - dark blue
+                document.querySelectorAll('#threePointArea rect').forEach(el => {
+                    el.setAttribute('fill', '#013220');
+                });
+                
+                // Keys - light blue
+                document.querySelectorAll('#key rect').forEach(el => {
+                    el.setAttribute('fill', '#87CEEB');
+                });
+                
+                // Top of key - brown
+                document.querySelectorAll('#topOfKey path').forEach(el => {
+                    el.setAttribute('fill', '#654321');
+                });
+                
+                // Center circle - green
+                document.querySelector('#centerCourtCircle').setAttribute('fill', '#228B22');
+                
+                // Hide logo area for cleaner comparison
+                const logoArea = document.querySelector('#logoArea');
+                if (logoArea) logoArea.style.display = 'none';
+            })
+            .catch(err => {
+                document.getElementById('court').innerHTML = '<p style="color: red;">Error loading SVG: ' + err + '</p>';
+            });
+    </script>
+</body>
+</html>
