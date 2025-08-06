@@ -1,62 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 570" width="940" height="570">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2900 1800" width="940" height="570">
   <!-- Border -->
-  <rect id="border" x="0" y="0" width="940" height="570" fill="#228B22" stroke="none"/>
+  <rect id="border" x="0" y="0" width="2900" height="1800" fill="#228B22" stroke="none"/>
   
-  <!-- Court (main playing surface) -->
-  <rect id="court" x="20" y="25" width="900" height="450" fill="#D2691E" stroke="white" stroke-width="2"/>
+  <!-- Court (main playing surface) - rotated 90 degrees -->
+  <rect id="court" x="50" y="50" width="2800" height="1500" fill="#D2691E" stroke="white" stroke-width="10"/>
   
-  <!-- 3-Point Areas - Areas OUTSIDE the arc line, between arc and sideline -->
+  <!-- 3-Point Areas - the curved areas between the 3-point line and the key, extending to court edges -->
   <g id="threePointArea">
-    <!-- Left side 3-point area - narrow area between arc and sideline -->
-    <path d="M 20 25 L 80 25 L 80 195 A 237 237 0 0 1 80 305 L 80 475 L 20 475 Z" fill="#FF6600"/>
-    <!-- Right side 3-point area - narrow area between arc and sideline -->
-    <path d="M 860 25 L 920 25 L 920 475 L 860 475 L 860 305 A 237 237 0 0 1 860 195 Z" fill="#FF6600"/>
+    <!-- Left 3-point area (from court edge to key) -->
+    <path d="M 50 175 L 207.5 175 A 625 625 0 0 1 207.5 1425 L 50 1425 L 50 980 L 630 980 L 630 620 L 50 620 Z" fill="#FF6600"/>
+    <!-- Right 3-point area (from key to court edge) -->
+    <path d="M 2850 175 L 2692.5 175 A 625 625 0 0 0 2692.5 1425 L 2850 1425 L 2850 980 L 2270 980 L 2270 620 L 2850 620 Z" fill="#FF6600"/>
   </g>
   
   <!-- Keys (paint areas near baskets) -->
   <g id="key">
-    <!-- Left key -->
-    <rect x="20" y="195" width="160" height="110" fill="#0066CC" stroke="white" stroke-width="2"/>
+    <!-- Left key - width should match free throw circle diameter (360px) -->
+    <rect x="50" y="620" width="580" height="360" fill="#0066CC" stroke="white" stroke-width="10"/>
     <!-- Right key -->
-    <rect x="760" y="195" width="160" height="110" fill="#0066CC" stroke="white" stroke-width="2"/>
+    <rect x="2270" y="620" width="580" height="360" fill="#0066CC" stroke="white" stroke-width="10"/>
   </g>
   
   <!-- Top of Key circles (free throw semicircles) -->
   <g id="topOfKey">
-    <!-- Left semicircle -->
-    <path d="M 180 190 A 60 60 0 0 1 180 310" fill="#663399" stroke="white" stroke-width="2"/>
-    <!-- Right semicircle -->
-    <path d="M 760 190 A 60 60 0 0 0 760 310" fill="#663399" stroke="white" stroke-width="2"/>
+    <!-- Left semicircle - connects to key at x=630 -->
+    <path d="M 630 620 A 180 180 0 0 1 630 980" fill="#663399" stroke="white" stroke-width="10"/>
+    <!-- Right semicircle - connects to key at x=2270 -->
+    <path d="M 2270 980 A 180 180 0 0 1 2270 620" fill="#663399" stroke="white" stroke-width="10"/>
   </g>
   
   <!-- Center Court Circle -->
-  <circle id="centerCourtCircle" cx="470" cy="250" r="60" fill="#800000" stroke="white" stroke-width="2"/>
+  <circle id="centerCourtCircle" cx="1450" cy="800" r="180" fill="#800000" stroke="white" stroke-width="10"/>
   
   <!-- Court lines -->
-  <g stroke="white" stroke-width="2" fill="none">
+  <g stroke="white" stroke-width="10" fill="none">
     <!-- Center line -->
-    <line x1="470" y1="25" x2="470" y2="475"/>
+    <line x1="1450" y1="50" x2="1450" y2="1550"/>
     
     <!-- Free throw circles -->
-    <circle cx="180" cy="250" r="60"/>
-    <circle cx="760" cy="250" r="60"/>
+    <circle cx="630" cy="800" r="180"/>
+    <circle cx="2270" cy="800" r="180"/>
     
-    <!-- 3-point arc lines -->
-    <path d="M 80 25 L 80 195 A 237 237 0 0 0 80 305 L 80 475"/>
-    <path d="M 860 25 L 860 195 A 237 237 0 0 1 860 305 L 860 475"/>
+    <!-- 3-point lines (rotated from vertical to horizontal) -->
+    <!-- Left 3-point line -->
+    <line x1="50" y1="175" x2="207.5" y2="175"/>
+    <path d="M 207.5,175 A 625,625 0 0,1 207.5,1425"/>
+    <line x1="207.5" y1="1425" x2="50" y2="1425"/>
+    
+    <!-- Right 3-point line -->
+    <line x1="2850" y1="175" x2="2692.5" y2="175"/>
+    <path d="M 2692.5,175 A 625,625 0 0,0 2692.5,1425"/>
+    <line x1="2692.5" y1="1425" x2="2850" y2="1425"/>
     
     <!-- Baskets -->
-    <circle cx="75" cy="250" r="6"/>
-    <circle cx="865" cy="250" r="6"/>
+    <circle cx="157.5" cy="800" r="20"/>
+    <circle cx="2742.5" cy="800" r="20"/>
     
     <!-- Backboards -->
-    <line x1="63" y1="240" x2="63" y2="260" stroke-width="3"/>
-    <line x1="877" y1="240" x2="877" y2="260" stroke-width="3"/>
+    <line x1="170" y1="710" x2="170" y2="890" stroke-width="20"/>
+    <line x1="2730" y1="710" x2="2730" y2="890" stroke-width="20"/>
   </g>
   
   <!-- Logo area below court -->
   <g id="logoArea">
-    <rect id="logoBackground" x="0" y="500" width="940" height="70" fill="#228B22"/>
-    <image id="courtLogo" x="370" y="505" width="200" height="60" href="" preserveAspectRatio="xMidYMid meet"/>
+    <rect id="logoBackground" x="0" y="1600" width="2900" height="200" fill="#228B22"/>
+    <image id="courtLogo" x="1250" y="1620" width="400" height="160" href="" preserveAspectRatio="xMidYMid meet"/>
   </g>
 </svg>

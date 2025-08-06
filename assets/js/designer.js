@@ -248,8 +248,8 @@
                     logoElement.setAttribute('href', this.logoUrl);
                     logoElement.style.display = 'block';
                 } else {
-                    // Use placeholder logo
-                    logoElement.setAttribute('href', this.pluginUrl + 'assets/images/placeholder-logo.svg');
+                    // Use CourtCo logo as default
+                    logoElement.setAttribute('href', this.pluginUrl + 'assets/images/courtco-logo.webp');
                     logoElement.style.display = 'block';
                 }
             }
