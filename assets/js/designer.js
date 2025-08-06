@@ -29,8 +29,32 @@
         }
         
         initializeDefaultColors() {
+            // Set better default colors for each court type
+            const defaultColors = {
+                tennis: {
+                    court: '#0066CC', // Blue
+                    border: '#228B22'  // Forest Green
+                },
+                basketball: {
+                    court: '#D2691E', // Tan/Wood color (Sandstone-like)
+                    border: '#228B22', // Forest Green
+                    threePointArea: '#CC0000', // Red
+                    key: '#0066CC', // Blue
+                    topOfKey: '#663399', // Tournament Purple
+                    centerCourtCircle: '#800000' // Maroon
+                },
+                pickleball: {
+                    court: '#0066CC', // Blue
+                    border: '#228B22', // Forest Green
+                    nonVolleyZone: '#FFD700' // Yellow (for kitchen)
+                }
+            };
+            
+            const courtDefaults = defaultColors[this.courtType] || {};
+            
             this.areas.forEach(area => {
-                this.colorState[area] = this.colors[0].hex;
+                // Use court-specific default or fall back to first color
+                this.colorState[area] = courtDefaults[area] || this.colors[0].hex;
             });
         }
         

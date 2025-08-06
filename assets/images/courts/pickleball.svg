@@ -7,10 +7,10 @@
   
   <!-- Non-Volley Zones (Kitchen) - 7 feet from net = 70 units -->
   <g id="nonVolleyZone">
-    <!-- Left non-volley zone -->
-    <rect x="25" y="25" width="70" height="200" fill="#FFD700" stroke="white" stroke-width="2"/>
-    <!-- Right non-volley zone -->
-    <rect x="395" y="25" width="70" height="200" fill="#FFD700" stroke="white" stroke-width="2"/>
+    <!-- Left non-volley zone (7 feet before net) -->
+    <rect x="175" y="25" width="70" height="200" fill="#FFD700" stroke="white" stroke-width="2"/>
+    <!-- Right non-volley zone (7 feet after net) -->
+    <rect x="245" y="25" width="70" height="200" fill="#FFD700" stroke="white" stroke-width="2"/>
   </g>
   
   <!-- Court lines -->
@@ -18,10 +18,13 @@
     <!-- Net line (center at 22 feet = 220 units) -->
     <line x1="245" y1="25" x2="245" y2="225" stroke-width="3" stroke-dasharray="5,5" opacity="0.7"/>
     
-    <!-- Service center line (divides service areas) -->
-    <line x1="95" y1="125" x2="395" y2="125"/>
+    <!-- Service area dividing lines -->
+    <!-- Left service court center line (from baseline to kitchen) -->
+    <line x1="25" y1="125" x2="175" y2="125"/>
+    <!-- Right service court center line (from kitchen to baseline) -->
+    <line x1="315" y1="125" x2="465" y2="125"/>
     
-    <!-- Baseline extensions for center marks -->
+    <!-- Baseline center marks (small marks at center of baselines) -->
     <line x1="25" y1="125" x2="35" y2="125" stroke-width="2"/>
     <line x1="455" y1="125" x2="465" y2="125" stroke-width="2"/>
   </g>
