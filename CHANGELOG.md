@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.2] - 2024-08-10
+
+### Fixed
+- All WordPress.org Plugin Check errors resolved
+- Replaced _e() with proper escaping functions (esc_html__, esc_attr__)
+- Added proper input validation for $_POST data
+- Removed deprecated load_plugin_textdomain() function
+
+### Changed
+- Updated tested up to WordPress 6.8
+- Reduced plugin tags to 5 (WordPress.org limit)
+- Shortened plugin description to under 150 characters
+- Improved code to meet WordPress coding standards
+
 ## [1.3.1] - 2024-08-10
 
 ### Fixed

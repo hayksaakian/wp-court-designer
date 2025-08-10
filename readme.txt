@@ -3,7 +3,7 @@ Contributors: hayksaakian
 Tags: sports, court, tennis, basketball, pickleball
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -111,6 +111,14 @@ No, all rendering is done client-side. The plugin does not make any external API
 4. Admin settings page for company logo upload
 
 == Changelog ==
+
+= 1.3.2 =
+* Fixed all WordPress.org Plugin Check errors
+* Replaced _e() with proper escaping functions (esc_html__, esc_attr__)
+* Added proper input validation for $_POST data
+* Removed deprecated load_plugin_textdomain() function
+* Updated tested up to WordPress 6.8
+* Improved code to meet WordPress coding standards
 
 = 1.3.1 =
 * Fixed reset colors button not updating color indicators
