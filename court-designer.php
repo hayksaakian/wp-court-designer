@@ -53,12 +53,8 @@ class CourtDesigner {
         $logo_id = get_option('court_designer_logo_id', 0);
         
         if ($old_logo_url && !$logo_id) {
-            // Try to find the attachment ID from the URL
-            global $wpdb;
-            $attachment_id = $wpdb->get_var($wpdb->prepare(
-                "SELECT ID FROM $wpdb->posts WHERE guid = %s AND post_type = 'attachment'",
-                $old_logo_url
-            ));
+            // Try to find the attachment ID from the URL using WordPress function
+            $attachment_id = attachment_url_to_postid($old_logo_url);
             
             if ($attachment_id) {
                 update_option('court_designer_logo_id', $attachment_id);
