@@ -106,11 +106,9 @@ No, all rendering is done client-side. The plugin does not make any external API
 == Screenshots ==
 
 1. Tennis court designer with color selection interface
-2. Basketball court with multiple customizable areas
-3. Pickleball court designer showing color options
-4. Admin settings page for logo upload
-5. Mobile responsive view
-6. Downloaded court design example
+2. Basketball court showing multiple customizable areas with color indicators
+3. Admin settings page for company logo upload
+4. Pickleball court designer with color customization options
 
 == Changelog ==
 
