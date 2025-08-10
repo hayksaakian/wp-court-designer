@@ -62,9 +62,18 @@
             const svgUrl = `${this.pluginUrl}assets/images/courts/${this.courtType}.svg?v=${Date.now()}`;
             const previewContainer = this.container.querySelector('.court-designer-preview');
             
+            console.log('Loading SVG from:', svgUrl);
+            
             fetch(svgUrl)
-                .then(response => response.text())
+                .then(response => {
+                    console.log('SVG response status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
                 .then(svgText => {
+                    console.log('SVG loaded, length:', svgText.length);
                     previewContainer.innerHTML = svgText;
                     this.svgElement = previewContainer.querySelector('svg');
                     this.applyColors();
@@ -75,7 +84,7 @@
                 })
                 .catch(error => {
                     console.error('Error loading SVG:', error);
-                    previewContainer.innerHTML = '<p>Error loading court image</p>';
+                    previewContainer.innerHTML = '<p>Error loading court image: ' + error.message + '</p>';
                 });
         }
         
@@ -276,12 +285,21 @@
     }
     
     // Initialize all court designers on the page
-    document.addEventListener('DOMContentLoaded', () => {
+    function initializeDesigners() {
         const designers = document.querySelectorAll('.court-designer');
+        console.log('Initializing ' + designers.length + ' court designer(s)');
         designers.forEach(container => {
             new CourtDesigner(container);
         });
-    });
+    }
+    
+    // Check if DOM is already loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeDesigners);
+    } else {
+        // DOM is already loaded (script loaded dynamically)
+        initializeDesigners();
+    }
     
     // For Gutenberg block dynamic loading
     if (window.wp && window.wp.domReady) {

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Court Designer Debug Test</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .debug {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            max-width: 300px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Court Designer Debug Test</h1>
+    
+    <div class="debug" id="debug">
+        <h3>Debug Info</h3>
+        <div id="debug-log"></div>
+    </div>
+    
+    <div class="court-designer" data-court-type="tennis">
+        <div class="court-designer-header">
+            <h2 class="court-designer-title">Court Designer</h2>
+            <div class="court-type-selector">
+                <select id="court-type-select">
+                    <option value="tennis" selected>Tennis</option>
+                    <option value="basketball">Basketball</option>
+                    <option value="pickleball">Pickleball</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="court-designer-container">
+            <div class="court-designer-preview">
+                <!-- SVG will be loaded here by JavaScript -->
+            </div>
+            
+            <div class="court-designer-controls">
+                <div class="area-selector">
+                    <h3 class="area-selector-title">Select Area to Color</h3>
+                    <div class="area-tabs">
+                        <button class="area-tab active" data-area="court">
+                            <span class="area-color-indicator" data-area="court"></span>
+                            Court
+                        </button>
+                        <button class="area-tab" data-area="border">
+                            <span class="area-color-indicator" data-area="border"></span>
+                            Border
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="color-palette">
+                    <h3 class="color-palette-title">
+                        Choose a Color
+                        <span class="current-color-name"></span>
+                    </h3>
+                    <div class="color-swatches">
+                        <!-- Color swatches will be added by JavaScript -->
+                    </div>
+                    
+                    <div class="color-note">
+                        Note: Colors may vary from actual product. Some pigments may have higher cost.
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-secondary btn-reset">Reset Colors</button>
+                    <button class="btn btn-success btn-download">Download Design</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function debugLog(msg) {
+            const log = document.getElementById('debug-log');
+            const entry = document.createElement('div');
+            entry.textContent = new Date().toISOString().split('T')[1].split('.')[0] + ' - ' + msg;
+            log.appendChild(entry);
+            console.log(msg);
+        }
+
+        debugLog('Starting initialization...');
+
+        // Mock WordPress data for local testing
+        window.courtDesignerData = {
+            pluginUrl: './',
+            logoUrl: '',
+            colors: [],
+            strings: {
+                court: 'Court',
+                border: 'Border',
+                threePointArea: '3-Point Area',
+                key: 'Key',
+                topOfKey: 'Top of Key',
+                centerCourtCircle: 'Center Court Circle',
+                nonVolleyZone: 'Non-Volley Zone',
+                reset: 'Reset',
+                changeCourt: 'Change Court',
+                download: 'Download Design',
+                colorNote: 'Note: Colors may vary from actual product. Some pigments may have higher cost.'
+            }
+        };
+
+        debugLog('Loading colors.json...');
+        
+        // Load colors.json
+        fetch('assets/data/colors.json')
+            .then(response => {
+                debugLog('Colors.json response received');
+                return response.json();
+            })
+            .then(colors => {
+                debugLog('Colors loaded: ' + colors.length + ' colors');
+                window.courtDesignerData.colors = colors;
+                
+                // Add color swatches to the DOM
+                const swatchContainer = document.querySelector('.color-swatches');
+                colors.forEach(color => {
+                    const swatch = document.createElement('div');
+                    swatch.className = 'color-swatch';
+                    swatch.dataset.color = color.hex;
+                    swatch.title = color.name;
+                    
+                    const inner = document.createElement('div');
+                    inner.className = 'color-swatch-inner';
+                    inner.style.backgroundColor = color.hex;
+                    
+                    if (color.leed && color.leed.credit) {
+                        const leed = document.createElement('span');
+                        leed.className = 'color-swatch-leed';
+                        leed.textContent = 'LEED';
+                        inner.appendChild(leed);
+                    }
+                    
+                    const tooltip = document.createElement('span');
+                    tooltip.className = 'color-name-tooltip';
+                    tooltip.textContent = color.name;
+                    
+                    swatch.appendChild(inner);
+                    swatch.appendChild(tooltip);
+                    swatchContainer.appendChild(swatch);
+                });
+                
+                debugLog('Loading designer.js...');
+                
+                // Load the designer script
+                const script = document.createElement('script');
+                script.src = 'assets/js/designer.js';
+                script.onload = () => debugLog('designer.js loaded');
+                script.onerror = () => debugLog('ERROR: designer.js failed to load');
+                document.body.appendChild(script);
+            })
+            .catch(error => {
+                debugLog('ERROR loading colors: ' + error.message);
+                console.error('Error loading colors:', error);
+            });
+
+        // Also catch any other errors
+        window.addEventListener('error', function(e) {
+            debugLog('JS ERROR: ' + e.message + ' at ' + e.filename + ':' + e.lineno);
+        });
+    </script>
+</body>
+</html>
