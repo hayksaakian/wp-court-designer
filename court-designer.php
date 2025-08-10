@@ -3,7 +3,7 @@
  * Plugin Name: Court Designer
  * Plugin URI: https://github.com/HaykSaakian/wp-court-designer
  * Description: Interactive court designer for tennis, basketball, and pickleball courts with customizable colors
- * Version: 1.0.2
+ * Version: 1.1.0
  * Author: Hayk Saakian
  * Author URI: https://github.com/HaykSaakian
  * License: GPL v2 or later
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('COURT_DESIGNER_VERSION', '1.0.2');
+define('COURT_DESIGNER_VERSION', '1.1.0');
 define('COURT_DESIGNER_URL', plugin_dir_url(__FILE__));
 define('COURT_DESIGNER_PATH', plugin_dir_path(__FILE__));
 
@@ -36,6 +36,7 @@ class CourtDesigner {
         add_shortcode('court_designer', array($this, 'render_shortcode'));
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('init', array($this, 'register_block'));
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
         
         // Add Settings link on plugins page
         add_filter('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'add_plugin_action_links'));
@@ -70,6 +71,7 @@ class CourtDesigner {
             wp_localize_script('court-designer-script', 'courtDesignerData', array(
                 'pluginUrl' => COURT_DESIGNER_URL,
                 'colors' => $colors,
+                'logoUrl' => get_option('court_designer_logo_url', ''),
                 'strings' => array(
                     'court' => __('Court', 'court-designer'),
                     'border' => __('Border', 'court-designer'),
@@ -147,6 +149,14 @@ class CourtDesigner {
         $settings_link = '<a href="' . admin_url('options-general.php?page=court-designer-settings') . '">' . __('Settings', 'court-designer') . '</a>';
         array_unshift($links, $settings_link);
         return $links;
+    }
+    
+    public function enqueue_admin_scripts($hook) {
+        if ('settings_page_court-designer-settings' !== $hook) {
+            return;
+        }
+        
+        wp_enqueue_media();
     }
 }
 

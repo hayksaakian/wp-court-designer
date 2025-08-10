@@ -8,7 +8,7 @@
             this.colors = window.courtDesignerData.colors;
             this.strings = window.courtDesignerData.strings;
             this.pluginUrl = window.courtDesignerData.pluginUrl;
-            this.logoUrl = null;
+            this.logoUrl = window.courtDesignerData.logoUrl || null;
             
             this.areas = this.getAreasForCourt(this.courtType);
             this.currentArea = this.areas[0];
@@ -113,21 +113,7 @@
                 });
             }
             
-            // Logo upload
-            const logoInput = this.container.querySelector('#logo-upload');
-            if (logoInput) {
-                logoInput.addEventListener('change', (e) => {
-                    this.handleLogoUpload(e);
-                });
-            }
-            
-            // Remove logo button
-            const removeLogoBtn = this.container.querySelector('.btn-remove-logo');
-            if (removeLogoBtn) {
-                removeLogoBtn.addEventListener('click', () => {
-                    this.removeLogo();
-                });
-            }
+            // Logo upload removed - now handled in admin settings only
         }
         
         selectArea(area) {
@@ -245,24 +231,6 @@
             img.src = svgUrl;
         }
         
-        handleLogoUpload(event) {
-            const file = event.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    this.logoUrl = e.target.result;
-                    this.updateLogo();
-                    
-                    // Show remove button
-                    const removeBtn = this.container.querySelector('.btn-remove-logo');
-                    if (removeBtn) {
-                        removeBtn.style.display = 'inline-block';
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-        
         updateLogo() {
             if (!this.svgElement) return;
             
@@ -272,29 +240,12 @@
                     logoElement.setAttribute('href', this.logoUrl);
                     logoElement.style.display = 'block';
                 } else {
-                    // Use CourtCo logo as default
-                    logoElement.setAttribute('href', this.pluginUrl + 'assets/images/courtco-logo.webp');
-                    logoElement.style.display = 'block';
+                    // Hide logo if none set
+                    logoElement.style.display = 'none';
                 }
             }
         }
         
-        removeLogo() {
-            this.logoUrl = null;
-            this.updateLogo();
-            
-            // Reset file input
-            const logoInput = this.container.querySelector('#logo-upload');
-            if (logoInput) {
-                logoInput.value = '';
-            }
-            
-            // Hide remove button
-            const removeBtn = this.container.querySelector('.btn-remove-logo');
-            if (removeBtn) {
-                removeBtn.style.display = 'none';
-            }
-        }
     }
     
     // Initialize all court designers on the page

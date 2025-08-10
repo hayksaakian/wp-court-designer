@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2024-08-10
+
+### Changed
+- **BREAKING**: Logo upload moved from frontend to admin settings only
+- Logo is now persistent across all court designs (company branding)
+- Logo no longer defaults to CourtCo logo when empty
+
+### Added
+- Company logo setting in WordPress admin panel
+- Media uploader integration for logo selection
+- Logo preview in admin settings
+
+### Removed
+- Frontend logo upload functionality
+- Per-session logo customization
+
 ## [1.0.2] - 2024-08-10
 
 ### Fixed

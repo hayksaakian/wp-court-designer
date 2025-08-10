@@ -88,20 +88,6 @@ $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_a
                 </div>
             </div>
             
-            <div class="logo-upload-section">
-                <h3 class="logo-section-title"><?php _e('Court Logo', 'court-designer'); ?></h3>
-                <div class="logo-controls">
-                    <label for="logo-upload" class="btn btn-primary btn-upload">
-                        <?php _e('Upload Logo', 'court-designer'); ?>
-                        <input type="file" id="logo-upload" accept="image/*" style="display: none;">
-                    </label>
-                    <button class="btn btn-secondary btn-remove-logo" style="display: none;">
-                        <?php _e('Remove Logo', 'court-designer'); ?>
-                    </button>
-                </div>
-                <p class="logo-note"><?php _e('Upload your logo to display at the bottom of the court (recommended: 200x60px)', 'court-designer'); ?></p>
-            </div>
-            
             <div class="action-buttons">
                 <button class="btn btn-secondary btn-reset"><?php _e('Reset Colors', 'court-designer'); ?></button>
                 <button class="btn btn-success btn-download"><?php _e('Download Design', 'court-designer'); ?></button>
