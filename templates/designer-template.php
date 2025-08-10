@@ -56,6 +56,7 @@ $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_a
                     foreach ($areas as $area_key => $area_label) : 
                     ?>
                         <button class="area-tab <?php echo $first ? 'active' : ''; ?>" data-area="<?php echo esc_attr($area_key); ?>">
+                            <span class="area-color-indicator" data-area="<?php echo esc_attr($area_key); ?>"></span>
                             <?php echo esc_html($area_label); ?>
                         </button>
                     <?php 
@@ -66,7 +67,10 @@ $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_a
             </div>
             
             <div class="color-palette">
-                <h3 class="color-palette-title"><?php _e('Choose Color', 'court-designer'); ?></h3>
+                <h3 class="color-palette-title">
+                    <?php _e('Choose a Color', 'court-designer'); ?>
+                    <span class="current-color-name"></span>
+                </h3>
                 <div class="color-swatches">
                     <?php foreach ($colors as $color) : ?>
                         <div class="color-swatch" data-color="<?php echo esc_attr($color['hex']); ?>" title="<?php echo esc_attr($color['name']); ?>">

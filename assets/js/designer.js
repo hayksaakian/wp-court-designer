@@ -69,6 +69,9 @@
                     this.svgElement = previewContainer.querySelector('svg');
                     this.applyColors();
                     this.updateLogo();
+                    this.updateColorIndicators();
+                    this.updateCurrentColorName();
+                    this.updateSelectedSwatch();
                 })
                 .catch(error => {
                     console.error('Error loading SVG:', error);
@@ -124,20 +127,44 @@
                 tab.classList.toggle('active', tab.dataset.area === area);
             });
             
-            // Update selected color swatch
+            // Update selected color swatch and current color name
             this.updateSelectedSwatch();
+            this.updateCurrentColorName();
         }
         
         selectColor(colorHex) {
             this.colorState[this.currentArea] = colorHex;
             this.applyColors();
             this.updateSelectedSwatch();
+            this.updateCurrentColorName();
+            this.updateColorIndicators();
         }
         
         updateSelectedSwatch() {
             const currentColor = this.colorState[this.currentArea];
             this.container.querySelectorAll('.color-swatch').forEach(swatch => {
                 swatch.classList.toggle('active', swatch.dataset.color === currentColor);
+            });
+        }
+        
+        updateCurrentColorName() {
+            const currentColor = this.colorState[this.currentArea];
+            const colorNameElement = this.container.querySelector('.current-color-name');
+            
+            if (colorNameElement) {
+                // Find the color name from the colors array
+                const colorObj = this.colors.find(c => c.hex === currentColor);
+                colorNameElement.textContent = colorObj ? colorObj.name : '';
+            }
+        }
+        
+        updateColorIndicators() {
+            // Update all color indicators to show the current color for each area
+            this.container.querySelectorAll('.area-color-indicator').forEach(indicator => {
+                const area = indicator.dataset.area;
+                if (this.colorState[area]) {
+                    indicator.style.backgroundColor = this.colorState[area];
+                }
             });
         }
         

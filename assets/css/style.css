@@ -85,6 +85,9 @@
     cursor: pointer;
     font-size: 14px;
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .area-tab:hover {
@@ -97,6 +100,19 @@
     border-color: #0066CC;
 }
 
+.area-color-indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 2px solid rgba(0,0,0,0.2);
+    background-color: #ddd;
+}
+
+.area-tab.active .area-color-indicator {
+    border-color: rgba(255,255,255,0.5);
+}
+
 .color-palette {
     margin-bottom: 20px;
 }
@@ -106,6 +122,17 @@
     font-weight: 500;
     margin-bottom: 10px;
     color: #555;
+}
+
+.current-color-name {
+    font-size: 14px;
+    font-weight: normal;
+    color: #666;
+    margin-left: 10px;
+}
+
+.current-color-name:not(:empty)::before {
+    content: "Currently Selected: ";
 }
 
 .color-swatches {

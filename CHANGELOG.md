@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2024-08-10
+
+### Added
+- Color indicators on area selection tabs showing current color for each area
+- "Currently Selected: [Color Name]" display when choosing colors
+- Visual feedback showing which color is selected for each court area
+
+### Changed
+- Improved user interface for better color selection clarity
+- "Choose Color" text updated to "Choose a Color" for better grammar
+
 ## [1.1.0] - 2024-08-10
 
 ### Changed
