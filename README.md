@@ -136,6 +136,53 @@ To add new court types:
 - WordPress 5.8 or higher
 - PHP 7.4 or higher
 
+## Versioning
+
+This plugin follows [Semantic Versioning](https://semver.org/):
+
+### Version Format: MAJOR.MINOR.PATCH
+
+- **MAJOR (X.0.0)**: Breaking changes
+  - Removing existing shortcode parameters
+  - Changing plugin structure requiring migration
+  - Dropping support for older WordPress/PHP versions
+  - Major UI/UX redesigns that change user workflow
+
+- **MINOR (1.X.0)**: New features, backwards compatible
+  - Adding new court types
+  - New color options or palettes
+  - New export formats (PDF, SVG)
+  - New block editor features
+  - Performance improvements
+  - New customization options
+
+- **PATCH (1.0.X)**: Bug fixes and minor updates
+  - Fixing color rendering issues
+  - Correcting typos or labels
+  - Security patches
+  - CSS/styling adjustments
+  - Documentation updates
+  - Dependency updates (if no API changes)
+
+### When to Bump Versions
+
+1. **Before each commit that changes functionality** - Update version in:
+   - `court-designer.php` header
+   - `package.json` (if applicable)
+   - `CHANGELOG.md` entry
+
+2. **For WordPress.org releases** - Only push MINOR and MAJOR versions
+3. **For hotfixes** - Use PATCH versions immediately
+
+### Version Checklist
+
+Before bumping version:
+- [ ] Update version in plugin header
+- [ ] Update package.json version
+- [ ] Add CHANGELOG.md entry
+- [ ] Test in WordPress Playground
+- [ ] Commit with message: "Bump version to X.Y.Z"
+
 ## Development
 
 ### Building Assets
