@@ -43,8 +43,6 @@ class CourtDesigner {
     }
     
     public function init() {
-        load_plugin_textdomain('court-designer', false, dirname(plugin_basename(__FILE__)) . '/languages');
-        
         // Migrate old logo URL to attachment ID if needed
         $this->migrate_logo_setting();
     }
@@ -137,7 +135,7 @@ class CourtDesigner {
         if (file_exists($template_path)) {
             include $template_path;
         } else {
-            echo '<p>' . __('Court designer template not found.', 'court-designer') . '</p>';
+            echo '<p>' . esc_html__('Court designer template not found.', 'court-designer') . '</p>';
         }
         return ob_get_clean();
     }
@@ -157,7 +155,7 @@ class CourtDesigner {
         if (file_exists($settings_path)) {
             include $settings_path;
         } else {
-            echo '<p>' . __('Settings page not found.', 'court-designer') . '</p>';
+            echo '<p>' . esc_html__('Settings page not found.', 'court-designer') . '</p>';
         }
     }
     
@@ -170,7 +168,8 @@ class CourtDesigner {
             'court-designer-block',
             COURT_DESIGNER_URL . 'assets/js/block.js',
             array('wp-blocks', 'wp-element', 'wp-editor'),
-            COURT_DESIGNER_VERSION
+            COURT_DESIGNER_VERSION,
+            true
         );
         
         register_block_type('court-designer/designer', array(

@@ -38,12 +38,12 @@ $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_a
 
 <div class="court-designer" data-court-type="<?php echo esc_attr($court_type); ?>">
     <div class="court-designer-header">
-        <h2 class="court-designer-title"><?php _e('Court Designer', 'court-designer'); ?></h2>
+        <h2 class="court-designer-title"><?php echo esc_html__('Court Designer', 'court-designer'); ?></h2>
         <div class="court-type-selector">
             <select id="court-type-select">
-                <option value="tennis" <?php selected($court_type, 'tennis'); ?>><?php _e('Tennis', 'court-designer'); ?></option>
-                <option value="basketball" <?php selected($court_type, 'basketball'); ?>><?php _e('Basketball', 'court-designer'); ?></option>
-                <option value="pickleball" <?php selected($court_type, 'pickleball'); ?>><?php _e('Pickleball', 'court-designer'); ?></option>
+                <option value="tennis" <?php selected($court_type, 'tennis'); ?>><?php echo esc_html__('Tennis', 'court-designer'); ?></option>
+                <option value="basketball" <?php selected($court_type, 'basketball'); ?>><?php echo esc_html__('Basketball', 'court-designer'); ?></option>
+                <option value="pickleball" <?php selected($court_type, 'pickleball'); ?>><?php echo esc_html__('Pickleball', 'court-designer'); ?></option>
             </select>
         </div>
     </div>
@@ -55,7 +55,7 @@ $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_a
         
         <div class="court-designer-controls">
             <div class="area-selector">
-                <h3 class="area-selector-title"><?php _e('Select Area to Color', 'court-designer'); ?></h3>
+                <h3 class="area-selector-title"><?php echo esc_html__('Select Area to Color', 'court-designer'); ?></h3>
                 <div class="area-tabs">
                     <?php 
                     $first = true;
@@ -74,7 +74,7 @@ $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_a
             
             <div class="color-palette">
                 <h3 class="color-palette-title">
-                    <?php _e('Choose a Color', 'court-designer'); ?>
+                    <?php echo esc_html__('Choose a Color', 'court-designer'); ?>
                     <span class="current-color-name"></span>
                 </h3>
                 <div class="color-swatches">
@@ -91,7 +91,7 @@ $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_a
                 </div>
                 
                 <div class="color-note">
-                    <?php _e('Note: Colors may vary from actual product. Some pigments may have higher cost.', 'court-designer'); ?>
+                    <?php echo esc_html__('Note: Colors may vary from actual product. Some pigments may have higher cost.', 'court-designer'); ?>
                     <?php if (isset($color['note'])) : ?>
                         <br><small><?php echo esc_html($color['note']); ?></small>
                     <?php endif; ?>
@@ -99,8 +99,8 @@ $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_a
             </div>
             
             <div class="action-buttons">
-                <button class="btn btn-secondary btn-reset"><?php _e('Reset Colors', 'court-designer'); ?></button>
-                <button class="btn btn-success btn-download"><?php _e('Download Design', 'court-designer'); ?></button>
+                <button class="btn btn-secondary btn-reset"><?php echo esc_html__('Reset Colors', 'court-designer'); ?></button>
+                <button class="btn btn-success btn-download"><?php echo esc_html__('Download Design', 'court-designer'); ?></button>
             </div>
         </div>
     </div>

@@ -4,12 +4,12 @@ if (!defined('ABSPATH')) {
 }
 
 // Handle form submission
-if (isset($_POST['court_designer_save_settings']) && wp_verify_nonce($_POST['court_designer_nonce'], 'court_designer_settings')) {
+if (isset($_POST['court_designer_save_settings']) && isset($_POST['court_designer_nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['court_designer_nonce'])), 'court_designer_settings')) {
     // Save logo attachment ID
     $logo_id = isset($_POST['court_designer_logo_id']) ? absint($_POST['court_designer_logo_id']) : 0;
     update_option('court_designer_logo_id', $logo_id);
     
-    echo '<div class="notice notice-success is-dismissible"><p>' . __('Settings saved.', 'court-designer') . '</p></div>';
+    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings saved.', 'court-designer') . '</p></div>';
 }
 
 $logo_id = get_option('court_designer_logo_id', 0);
@@ -20,20 +20,20 @@ $logo_url = $logo_id ? wp_get_attachment_url($logo_id) : '';
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
     
     <div class="notice notice-info">
-        <p><?php _e('Court Designer allows you to embed interactive court designers using the shortcode [court_designer type="tennis|basketball|pickleball"] or the Gutenberg block.', 'court-designer'); ?></p>
+        <p><?php echo esc_html__('Court Designer allows you to embed interactive court designers using the shortcode [court_designer type="tennis|basketball|pickleball"] or the Gutenberg block.', 'court-designer'); ?></p>
     </div>
     
     <form method="post" action="">
         <?php wp_nonce_field('court_designer_settings', 'court_designer_nonce'); ?>
         
         <div class="card">
-            <h2><?php _e('Company Logo', 'court-designer'); ?></h2>
-            <p><?php _e('Upload your company logo to display on all court designs. This logo will appear at the bottom of the court preview.', 'court-designer'); ?></p>
+            <h2><?php echo esc_html__('Company Logo', 'court-designer'); ?></h2>
+            <p><?php echo esc_html__('Upload your company logo to display on all court designs. This logo will appear at the bottom of the court preview.', 'court-designer'); ?></p>
             
             <table class="form-table">
                 <tr>
                     <th scope="row">
-                        <label><?php _e('Logo Image', 'court-designer'); ?></label>
+                        <label><?php echo esc_html__('Logo Image', 'court-designer'); ?></label>
                     </th>
                     <td>
                         <input type="hidden" id="court_designer_logo_id" name="court_designer_logo_id" value="<?php echo esc_attr($logo_id); ?>" />
@@ -46,34 +46,34 @@ $logo_url = $logo_id ? wp_get_attachment_url($logo_id) : '';
                             <?php endif; ?>
                         </div>
                         
-                        <button type="button" class="button" id="upload_logo_button"><?php _e('Select Logo', 'court-designer'); ?></button>
-                        <button type="button" class="button" id="remove_logo_button" <?php echo $logo_id ? '' : 'style="display:none;"'; ?>><?php _e('Remove Logo', 'court-designer'); ?></button>
+                        <button type="button" class="button" id="upload_logo_button"><?php echo esc_html__('Select Logo', 'court-designer'); ?></button>
+                        <button type="button" class="button" id="remove_logo_button" <?php echo $logo_id ? '' : 'style="display:none;"'; ?>><?php echo esc_html__('Remove Logo', 'court-designer'); ?></button>
                         
-                        <p class="description"><?php _e('Recommended size: 200x60px. Transparent PNG works best.', 'court-designer'); ?></p>
+                        <p class="description"><?php echo esc_html__('Recommended size: 200x60px. Transparent PNG works best.', 'court-designer'); ?></p>
                     </td>
                 </tr>
             </table>
             
             <p class="submit">
-                <input type="submit" name="court_designer_save_settings" class="button-primary" value="<?php _e('Save Settings', 'court-designer'); ?>" />
+                <input type="submit" name="court_designer_save_settings" class="button-primary" value="<?php echo esc_attr__('Save Settings', 'court-designer'); ?>" />
             </p>
         </div>
     </form>
     
     <div class="card">
-        <h2><?php _e('Usage', 'court-designer'); ?></h2>
-        <h3><?php _e('Shortcode', 'court-designer'); ?></h3>
-        <p><code>[court_designer type="tennis"]</code> - <?php _e('Tennis court designer', 'court-designer'); ?></p>
-        <p><code>[court_designer type="basketball"]</code> - <?php _e('Basketball court designer', 'court-designer'); ?></p>
-        <p><code>[court_designer type="pickleball"]</code> - <?php _e('Pickleball court designer', 'court-designer'); ?></p>
+        <h2><?php echo esc_html__('Usage', 'court-designer'); ?></h2>
+        <h3><?php echo esc_html__('Shortcode', 'court-designer'); ?></h3>
+        <p><code>[court_designer type="tennis"]</code> - <?php echo esc_html__('Tennis court designer', 'court-designer'); ?></p>
+        <p><code>[court_designer type="basketball"]</code> - <?php echo esc_html__('Basketball court designer', 'court-designer'); ?></p>
+        <p><code>[court_designer type="pickleball"]</code> - <?php echo esc_html__('Pickleball court designer', 'court-designer'); ?></p>
         
-        <h3><?php _e('Gutenberg Block', 'court-designer'); ?></h3>
-        <p><?php _e('Search for "Court Designer" in the block editor and select your court type.', 'court-designer'); ?></p>
+        <h3><?php echo esc_html__('Gutenberg Block', 'court-designer'); ?></h3>
+        <p><?php echo esc_html__('Search for "Court Designer" in the block editor and select your court type.', 'court-designer'); ?></p>
     </div>
     
     <div class="card">
-        <h2><?php _e('Available Colors', 'court-designer'); ?></h2>
-        <p><?php _e('The following colors are available for court customization:', 'court-designer'); ?></p>
+        <h2><?php echo esc_html__('Available Colors', 'court-designer'); ?></h2>
+        <p><?php echo esc_html__('The following colors are available for court customization:', 'court-designer'); ?></p>
         <ul>
             <li>Ice Blue, Light Blue, Blue</li>
             <li>Light Green, Forest Green, Dark Green</li>
@@ -82,32 +82,32 @@ $logo_url = $logo_id ? wp_get_attachment_url($logo_id) : '';
             <li>Sandstone, Beige, Dove Gray</li>
             <li>Brown (ColorPlus fusion blend)</li>
         </ul>
-        <p class="description"><?php _e('Colors can be customized by editing the colors.json file in the plugin assets/data directory.', 'court-designer'); ?></p>
+        <p class="description"><?php echo esc_html__('Colors can be customized by editing the colors.json file in the plugin assets/data directory.', 'court-designer'); ?></p>
     </div>
     
     <div class="card">
-        <h2><?php _e('Court Areas', 'court-designer'); ?></h2>
-        <h3><?php _e('Tennis', 'court-designer'); ?></h3>
+        <h2><?php echo esc_html__('Court Areas', 'court-designer'); ?></h2>
+        <h3><?php echo esc_html__('Tennis', 'court-designer'); ?></h3>
         <ul>
-            <li><?php _e('Court (inner play area)', 'court-designer'); ?></li>
-            <li><?php _e('Border (outer area)', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Court (inner play area)', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Border (outer area)', 'court-designer'); ?></li>
         </ul>
         
-        <h3><?php _e('Basketball', 'court-designer'); ?></h3>
+        <h3><?php echo esc_html__('Basketball', 'court-designer'); ?></h3>
         <ul>
-            <li><?php _e('Court', 'court-designer'); ?></li>
-            <li><?php _e('Border', 'court-designer'); ?></li>
-            <li><?php _e('3-Point Area', 'court-designer'); ?></li>
-            <li><?php _e('Key', 'court-designer'); ?></li>
-            <li><?php _e('Top of Key', 'court-designer'); ?></li>
-            <li><?php _e('Center Court Circle', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Court', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Border', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('3-Point Area', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Key', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Top of Key', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Center Court Circle', 'court-designer'); ?></li>
         </ul>
         
-        <h3><?php _e('Pickleball', 'court-designer'); ?></h3>
+        <h3><?php echo esc_html__('Pickleball', 'court-designer'); ?></h3>
         <ul>
-            <li><?php _e('Court', 'court-designer'); ?></li>
-            <li><?php _e('Border', 'court-designer'); ?></li>
-            <li><?php _e('Non-Volley Zone', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Court', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Border', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Non-Volley Zone', 'court-designer'); ?></li>
         </ul>
     </div>
 </div>
@@ -128,9 +128,9 @@ jQuery(document).ready(function($) {
         
         // Create the media frame
         mediaUploader = wp.media({
-            title: '<?php _e('Choose Logo', 'court-designer'); ?>',
+            title: '<?php echo esc_js(__('Choose Logo', 'court-designer')); ?>',
             button: {
-                text: '<?php _e('Use this logo', 'court-designer'); ?>'
+                text: '<?php echo esc_js(__('Use this logo', 'court-designer')); ?>'
             },
             multiple: false,
             library: {

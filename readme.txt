@@ -1,14 +1,14 @@
 === Court Designer ===
 Contributors: hayksaakian
-Tags: sports, court, designer, tennis, basketball, pickleball, customization, color picker
+Tags: sports, court, tennis, basketball, pickleball
 Requires at least: 5.8
-Tested up to: 6.4
+Tested up to: 6.8
 Stable tag: 1.3.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Interactive court designer for tennis, basketball, and pickleball courts with customizable colors for construction companies to showcase options to clients.
+Interactive court designer for tennis, basketball, and pickleball courts with customizable colors for construction companies.
 
 == Description ==
 
