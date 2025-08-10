@@ -3,7 +3,7 @@ Contributors: hayksaakian
 Tags: sports, court, designer, tennis, basketball, pickleball, customization, color picker
 Requires at least: 5.8
 Tested up to: 6.4
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -113,6 +113,11 @@ No, all rendering is done client-side. The plugin does not make any external API
 6. Downloaded court design example
 
 == Changelog ==
+
+= 1.3.1 =
+* Fixed reset colors button not updating color indicators
+* Fixed basketball and pickleball color indicators display
+* Fixed color indicators when switching court types
 
 = 1.3.0 =
 * Security Enhancement: Removed URL input for logos - Media Library only

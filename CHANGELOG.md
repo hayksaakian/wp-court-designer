@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2024-08-10
+
+### Fixed
+- Reset colors button now properly updates color indicators
+- Basketball and Pickleball color indicators now display correctly when switching court types
+- Color indicators properly rebuild when changing court types
+
 ## [1.3.0] - 2024-08-10
 
 ### Security Enhancement

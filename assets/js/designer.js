@@ -225,7 +225,15 @@
                 tab.className = 'area-tab';
                 if (index === 0) tab.classList.add('active');
                 tab.dataset.area = area;
-                tab.textContent = this.strings[area] || area;
+                
+                // Add color indicator span
+                const indicator = document.createElement('span');
+                indicator.className = 'area-color-indicator';
+                indicator.dataset.area = area;
+                indicator.style.backgroundColor = this.colorState[area] || '#ddd';
+                
+                tab.appendChild(indicator);
+                tab.appendChild(document.createTextNode(this.strings[area] || area));
                 tabsContainer.appendChild(tab);
             });
         }
@@ -234,6 +242,8 @@
             this.initializeDefaultColors();
             this.applyColors();
             this.updateSelectedSwatch();
+            this.updateColorIndicators();
+            this.updateCurrentColorName();
         }
         
         downloadDesign() {
