@@ -1,11 +1,13 @@
 <?php
 /**
  * Plugin Name: Court Designer
- * Plugin URI: https://github.com/yourusername/wp-court-designer
+ * Plugin URI: https://github.com/HaykSaakian/wp-court-designer
  * Description: Interactive court designer for tennis, basketball, and pickleball courts with customizable colors
  * Version: 1.0.0
- * Author: Your Name
- * License: GPL-2.0+
+ * Author: Hayk Saakian
+ * Author URI: https://github.com/HaykSaakian
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: court-designer
  */
 
