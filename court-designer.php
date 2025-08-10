@@ -3,7 +3,7 @@
  * Plugin Name: Court Designer
  * Plugin URI: https://github.com/HaykSaakian/wp-court-designer
  * Description: Interactive court designer for tennis, basketball, and pickleball courts with customizable colors
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: Hayk Saakian
  * Author URI: https://github.com/HaykSaakian
  * License: GPL v2 or later
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('COURT_DESIGNER_VERSION', '1.2.0');
+define('COURT_DESIGNER_VERSION', '1.2.1');
 define('COURT_DESIGNER_URL', plugin_dir_url(__FILE__));
 define('COURT_DESIGNER_PATH', plugin_dir_path(__FILE__));
 
@@ -65,8 +65,13 @@ class CourtDesigner {
                 true
             );
             
-            $colors_json = file_get_contents(COURT_DESIGNER_PATH . 'assets/data/colors.json');
-            $colors = json_decode($colors_json, true);
+            $colors_json = @file_get_contents(COURT_DESIGNER_PATH . 'assets/data/colors.json');
+            $colors = $colors_json ? json_decode($colors_json, true) : array();
+            
+            // Validate colors array
+            if (!is_array($colors)) {
+                $colors = array();
+            }
             
             wp_localize_script('court-designer-script', 'courtDesignerData', array(
                 'pluginUrl' => COURT_DESIGNER_URL,
@@ -99,7 +104,12 @@ class CourtDesigner {
         }
         
         ob_start();
-        include COURT_DESIGNER_PATH . 'templates/designer-template.php';
+        $template_path = COURT_DESIGNER_PATH . 'templates/designer-template.php';
+        if (file_exists($template_path)) {
+            include $template_path;
+        } else {
+            echo '<p>' . __('Court designer template not found.', 'court-designer') . '</p>';
+        }
         return ob_get_clean();
     }
     
@@ -114,7 +124,12 @@ class CourtDesigner {
     }
     
     public function settings_page() {
-        include COURT_DESIGNER_PATH . 'admin/settings-page.php';
+        $settings_path = COURT_DESIGNER_PATH . 'admin/settings-page.php';
+        if (file_exists($settings_path)) {
+            include $settings_path;
+        } else {
+            echo '<p>' . __('Settings page not found.', 'court-designer') . '</p>';
+        }
     }
     
     public function register_block() {

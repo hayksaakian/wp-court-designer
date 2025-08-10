@@ -4,7 +4,13 @@ if (!defined('ABSPATH')) {
 }
 
 $court_type = isset($atts['type']) ? esc_attr($atts['type']) : 'tennis';
-$colors = json_decode(file_get_contents(COURT_DESIGNER_PATH . 'assets/data/colors.json'), true);
+
+// Load colors with error handling
+$colors_json = @file_get_contents(COURT_DESIGNER_PATH . 'assets/data/colors.json');
+$colors = $colors_json ? json_decode($colors_json, true) : array();
+if (!is_array($colors)) {
+    $colors = array();
+}
 
 // Define areas for each court type
 $court_areas = array(

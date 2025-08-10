@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2024-08-10
+
+### Security
+- Enhanced URL validation for logo uploads using esc_url_raw() and FILTER_VALIDATE_URL
+- Added error handling for JSON file loading and parsing
+- Improved file inclusion with existence checks
+- Better input validation and sanitization throughout
+
+### Fixed
+- JavaScript initialization for dynamically loaded scripts
+- Error handling for missing template files
+- JSON parsing errors now handled gracefully
+
 ## [1.2.0] - 2024-08-10
 
 ### Added

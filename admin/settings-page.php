@@ -5,8 +5,15 @@ if (!defined('ABSPATH')) {
 
 // Handle form submission
 if (isset($_POST['court_designer_save_settings']) && wp_verify_nonce($_POST['court_designer_nonce'], 'court_designer_settings')) {
-    update_option('court_designer_logo_url', sanitize_text_field($_POST['court_designer_logo_url']));
-    echo '<div class="notice notice-success is-dismissible"><p>' . __('Settings saved.', 'court-designer') . '</p></div>';
+    $logo_url = isset($_POST['court_designer_logo_url']) ? esc_url_raw($_POST['court_designer_logo_url']) : '';
+    
+    // Validate URL if provided
+    if (!empty($logo_url) && !filter_var($logo_url, FILTER_VALIDATE_URL)) {
+        echo '<div class="notice notice-error is-dismissible"><p>' . __('Invalid URL provided for logo.', 'court-designer') . '</p></div>';
+    } else {
+        update_option('court_designer_logo_url', $logo_url);
+        echo '<div class="notice notice-success is-dismissible"><p>' . __('Settings saved.', 'court-designer') . '</p></div>';
+    }
 }
 
 $logo_url = get_option('court_designer_logo_url', '');
