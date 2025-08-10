@@ -3,7 +3,7 @@
  * Plugin Name: Court Designer
  * Plugin URI: https://github.com/HaykSaakian/wp-court-designer
  * Description: Interactive court designer for tennis, basketball, and pickleball courts with customizable colors
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Hayk Saakian
  * Author URI: https://github.com/HaykSaakian
  * License: GPL v2 or later
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('COURT_DESIGNER_VERSION', '1.0.0');
+define('COURT_DESIGNER_VERSION', '1.0.1');
 define('COURT_DESIGNER_URL', plugin_dir_url(__FILE__));
 define('COURT_DESIGNER_PATH', plugin_dir_path(__FILE__));
 
@@ -36,6 +36,9 @@ class CourtDesigner {
         add_shortcode('court_designer', array($this, 'render_shortcode'));
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('init', array($this, 'register_block'));
+        
+        // Add Settings link on plugins page
+        add_filter('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'add_plugin_action_links'));
     }
     
     public function init() {
@@ -138,6 +141,12 @@ class CourtDesigner {
     
     public function render_block($attributes) {
         return $this->render_shortcode(array('type' => $attributes['courtType']));
+    }
+    
+    public function add_plugin_action_links($links) {
+        $settings_link = '<a href="' . admin_url('admin.php?page=court-designer') . '">' . __('Settings', 'court-designer') . '</a>';
+        array_unshift($links, $settings_link);
+        return $links;
     }
 }
 

@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2024-08-10
+
 ### Added
+- Settings link in WordPress plugins list for quick access to configuration
 - Versioning documentation and principles
 - CHANGELOG.md for tracking changes
 - Automatic plugin build on git commit
