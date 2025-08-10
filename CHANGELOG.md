@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2024-08-10
+
+### Security Enhancement
+- **MAJOR SECURITY IMPROVEMENT**: Removed URL input for logos completely
+- Logo uploads now ONLY through WordPress Media Library (no external URLs)
+- Logos stored as attachment IDs instead of URLs for better security
+- Eliminated all URL validation vulnerabilities
+
+### Added
+- Automatic migration from old logo URLs to attachment IDs for existing users
+- Better integration with WordPress Media Library
+- Image type filtering in media uploader (only images allowed)
+
+### Changed
+- Logo setting now uses attachment ID instead of URL
+- Simplified admin interface - single button for logo selection
+- More secure data storage using WordPress attachment system
+
+### Removed
+- URL input field for logo uploads (security improvement)
+- URL validation code (no longer needed)
+
 ## [1.2.1] - 2024-08-10
 
 ### Security

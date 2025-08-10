@@ -3,7 +3,7 @@
  * Plugin Name: Court Designer
  * Plugin URI: https://github.com/HaykSaakian/wp-court-designer
  * Description: Interactive court designer for tennis, basketball, and pickleball courts with customizable colors
- * Version: 1.2.1
+ * Version: 1.3.0
  * Author: Hayk Saakian
  * Author URI: https://github.com/HaykSaakian
  * License: GPL v2 or later
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('COURT_DESIGNER_VERSION', '1.2.1');
+define('COURT_DESIGNER_VERSION', '1.3.0');
 define('COURT_DESIGNER_URL', plugin_dir_url(__FILE__));
 define('COURT_DESIGNER_PATH', plugin_dir_path(__FILE__));
 
@@ -44,6 +44,31 @@ class CourtDesigner {
     
     public function init() {
         load_plugin_textdomain('court-designer', false, dirname(plugin_basename(__FILE__)) . '/languages');
+        
+        // Migrate old logo URL to attachment ID if needed
+        $this->migrate_logo_setting();
+    }
+    
+    private function migrate_logo_setting() {
+        // Check if we have an old logo URL but no logo ID
+        $old_logo_url = get_option('court_designer_logo_url', '');
+        $logo_id = get_option('court_designer_logo_id', 0);
+        
+        if ($old_logo_url && !$logo_id) {
+            // Try to find the attachment ID from the URL
+            global $wpdb;
+            $attachment_id = $wpdb->get_var($wpdb->prepare(
+                "SELECT ID FROM $wpdb->posts WHERE guid = %s AND post_type = 'attachment'",
+                $old_logo_url
+            ));
+            
+            if ($attachment_id) {
+                update_option('court_designer_logo_id', $attachment_id);
+            }
+            
+            // Clean up old option
+            delete_option('court_designer_logo_url');
+        }
     }
     
     public function enqueue_scripts() {
@@ -73,10 +98,14 @@ class CourtDesigner {
                 $colors = array();
             }
             
+            // Get logo URL from attachment ID
+            $logo_id = get_option('court_designer_logo_id', 0);
+            $logo_url = $logo_id ? wp_get_attachment_url($logo_id) : '';
+            
             wp_localize_script('court-designer-script', 'courtDesignerData', array(
                 'pluginUrl' => COURT_DESIGNER_URL,
                 'colors' => $colors,
-                'logoUrl' => get_option('court_designer_logo_url', ''),
+                'logoUrl' => $logo_url,
                 'strings' => array(
                     'court' => __('Court', 'court-designer'),
                     'border' => __('Border', 'court-designer'),
