@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Build WordPress plugin zip file for Court Designer
+# Build WordPress plugin zip file for Sports Court Designer
 
-PLUGIN_NAME="court-designer"
+PLUGIN_NAME="sports-court-designer"
 ZIP_FILE="../${PLUGIN_NAME}.zip"
 
 echo "Building WordPress plugin: ${PLUGIN_NAME}.zip"

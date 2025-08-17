@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name: Court Designer
+ * Plugin Name: Sports Court Designer
  * Plugin URI: https://github.com/HaykSaakian/wp-court-designer
- * Description: Interactive court designer for tennis, basketball, and pickleball courts with customizable colors
+ * Description: Interactive sports court designer for tennis, basketball, and pickleball courts with customizable colors
  * Version: 1.3.2
  * Author: Hayk Saakian
  * Author URI: https://github.com/HaykSaakian
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: court-designer
+ * Text Domain: sports-court-designer
  */
 
 if (!defined('ABSPATH')) {
@@ -101,17 +101,17 @@ class CourtDesigner {
                 'colors' => $colors,
                 'logoUrl' => $logo_url,
                 'strings' => array(
-                    'court' => __('Court', 'court-designer'),
-                    'border' => __('Border', 'court-designer'),
-                    'threePointArea' => __('3-Point Area', 'court-designer'),
-                    'key' => __('Key', 'court-designer'),
-                    'topOfKey' => __('Top of Key', 'court-designer'),
-                    'centerCourtCircle' => __('Center Court Circle', 'court-designer'),
-                    'nonVolleyZone' => __('Non-Volley Zone', 'court-designer'),
-                    'reset' => __('Reset', 'court-designer'),
-                    'changeCourt' => __('Change Court', 'court-designer'),
-                    'download' => __('Download Design', 'court-designer'),
-                    'colorNote' => __('Note: Colors may vary from actual product. Some pigments may have higher cost.', 'court-designer')
+                    'court' => __('Court', 'sports-court-designer'),
+                    'border' => __('Border', 'sports-court-designer'),
+                    'threePointArea' => __('3-Point Area', 'sports-court-designer'),
+                    'key' => __('Key', 'sports-court-designer'),
+                    'topOfKey' => __('Top of Key', 'sports-court-designer'),
+                    'centerCourtCircle' => __('Center Court Circle', 'sports-court-designer'),
+                    'nonVolleyZone' => __('Non-Volley Zone', 'sports-court-designer'),
+                    'reset' => __('Reset', 'sports-court-designer'),
+                    'changeCourt' => __('Change Court', 'sports-court-designer'),
+                    'download' => __('Download Design', 'sports-court-designer'),
+                    'colorNote' => __('Note: Colors may vary from actual product. Some pigments may have higher cost.', 'sports-court-designer')
                 )
             ));
         }
@@ -131,15 +131,15 @@ class CourtDesigner {
         if (file_exists($template_path)) {
             include $template_path;
         } else {
-            echo '<p>' . esc_html__('Court designer template not found.', 'court-designer') . '</p>';
+            echo '<p>' . esc_html__('Court designer template not found.', 'sports-court-designer') . '</p>';
         }
         return ob_get_clean();
     }
     
     public function add_admin_menu() {
         add_options_page(
-            __('Court Designer Settings', 'court-designer'),
-            __('Court Designer', 'court-designer'),
+            __('Sports Court Designer Settings', 'sports-court-designer'),
+            __('Sports Court Designer', 'sports-court-designer'),
             'manage_options',
             'court-designer-settings',
             array($this, 'settings_page')
@@ -151,7 +151,7 @@ class CourtDesigner {
         if (file_exists($settings_path)) {
             include $settings_path;
         } else {
-            echo '<p>' . esc_html__('Settings page not found.', 'court-designer') . '</p>';
+            echo '<p>' . esc_html__('Settings page not found.', 'sports-court-designer') . '</p>';
         }
     }
     
@@ -185,7 +185,7 @@ class CourtDesigner {
     }
     
     public function add_plugin_action_links($links) {
-        $settings_link = '<a href="' . admin_url('options-general.php?page=court-designer-settings') . '">' . __('Settings', 'court-designer') . '</a>';
+        $settings_link = '<a href="' . admin_url('options-general.php?page=court-designer-settings') . '">' . __('Settings', 'sports-court-designer') . '</a>';
         array_unshift($links, $settings_link);
         return $links;
     }

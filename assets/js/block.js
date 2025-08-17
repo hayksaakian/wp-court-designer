@@ -5,7 +5,7 @@
     var InspectorControls = blockEditor.InspectorControls;
     
     blocks.registerBlockType('court-designer/designer', {
-        title: 'Court Designer',
+        title: 'Sports Court Designer',
         icon: 'art',
         category: 'widgets',
         attributes: {
@@ -24,7 +24,7 @@
             
             return [
                 el(InspectorControls, {},
-                    el(PanelBody, { title: 'Court Designer Settings' },
+                    el(PanelBody, { title: 'Sports Court Designer Settings' },
                         el(SelectControl, {
                             label: 'Court Type',
                             value: courtType,

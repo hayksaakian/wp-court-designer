@@ -1,4 +1,4 @@
-=== Court Designer ===
+=== Sports Court Designer ===
 Contributors: hayksaakian
 Tags: sports, court, tennis, basketball, pickleball
 Requires at least: 5.8
@@ -8,11 +8,11 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Interactive court designer for tennis, basketball, and pickleball courts with customizable colors for construction companies.
+Interactive sports court designer for tennis, basketball, and pickleball courts with customizable colors for construction companies.
 
 == Description ==
 
-Court Designer is a free, open-source WordPress plugin that allows construction companies to embed an interactive court designer on their website. Clients can preview different color combinations for tennis, basketball, and pickleball courts in real-time.
+Sports Court Designer is a free, open-source WordPress plugin that allows construction companies to embed an interactive sports court designer on their website. Clients can preview different color combinations for tennis, basketball, and pickleball courts in real-time.
 
 **Perfect for:**
 * Court construction companies
@@ -62,7 +62,7 @@ Court Designer is a free, open-source WordPress plugin that allows construction 
 
 1. Upload the plugin files to the `/wp-content/plugins/court-designer` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the Settings → Court Designer screen to configure the plugin and add your company logo
+3. Use the Settings → Sports Court Designer screen to configure the plugin and add your company logo
 4. Add the court designer to any page or post using the shortcode or block
 
 == Usage ==
@@ -73,7 +73,7 @@ Court Designer is a free, open-source WordPress plugin that allows construction 
 `[court_designer type="pickleball"]`
 
 **Via Gutenberg Block:**
-1. In the block editor, search for "Court Designer"
+1. In the block editor, search for "Sports Court Designer"
 2. Add the block to your page
 3. Select the court type in the block settings
 
@@ -97,7 +97,7 @@ Yes, the court designer is fully responsive and works on all modern devices and 
 
 = Can I add my company logo? =
 
-Yes! Go to Settings → Court Designer in your WordPress admin to upload your company logo. It will appear on all court designs.
+Yes! Go to Settings → Sports Court Designer in your WordPress admin to upload your company logo. It will appear on all court designs.
 
 = Does this plugin make external API calls? =
 

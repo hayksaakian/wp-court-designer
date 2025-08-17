@@ -9,7 +9,7 @@ if (isset($_POST['court_designer_save_settings']) && isset($_POST['court_designe
     $logo_id = isset($_POST['court_designer_logo_id']) ? absint($_POST['court_designer_logo_id']) : 0;
     update_option('court_designer_logo_id', $logo_id);
     
-    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings saved.', 'court-designer') . '</p></div>';
+    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings saved.', 'sports-court-designer') . '</p></div>';
 }
 
 $logo_id = get_option('court_designer_logo_id', 0);
@@ -20,20 +20,20 @@ $logo_url = $logo_id ? wp_get_attachment_url($logo_id) : '';
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
     
     <div class="notice notice-info">
-        <p><?php echo esc_html__('Court Designer allows you to embed interactive court designers using the shortcode [court_designer type="tennis|basketball|pickleball"] or the Gutenberg block.', 'court-designer'); ?></p>
+        <p><?php echo esc_html__('Sports Court Designer allows you to embed interactive court designers using the shortcode [court_designer type="tennis|basketball|pickleball"] or the Gutenberg block.', 'sports-court-designer'); ?></p>
     </div>
     
     <form method="post" action="">
         <?php wp_nonce_field('court_designer_settings', 'court_designer_nonce'); ?>
         
         <div class="card">
-            <h2><?php echo esc_html__('Company Logo', 'court-designer'); ?></h2>
-            <p><?php echo esc_html__('Upload your company logo to display on all court designs. This logo will appear at the bottom of the court preview.', 'court-designer'); ?></p>
+            <h2><?php echo esc_html__('Company Logo', 'sports-court-designer'); ?></h2>
+            <p><?php echo esc_html__('Upload your company logo to display on all court designs. This logo will appear at the bottom of the court preview.', 'sports-court-designer'); ?></p>
             
             <table class="form-table">
                 <tr>
                     <th scope="row">
-                        <label><?php echo esc_html__('Logo Image', 'court-designer'); ?></label>
+                        <label><?php echo esc_html__('Logo Image', 'sports-court-designer'); ?></label>
                     </th>
                     <td>
                         <input type="hidden" id="court_designer_logo_id" name="court_designer_logo_id" value="<?php echo esc_attr($logo_id); ?>" />
@@ -46,34 +46,34 @@ $logo_url = $logo_id ? wp_get_attachment_url($logo_id) : '';
                             <?php endif; ?>
                         </div>
                         
-                        <button type="button" class="button" id="upload_logo_button"><?php echo esc_html__('Select Logo', 'court-designer'); ?></button>
-                        <button type="button" class="button" id="remove_logo_button" <?php echo $logo_id ? '' : 'style="display:none;"'; ?>><?php echo esc_html__('Remove Logo', 'court-designer'); ?></button>
+                        <button type="button" class="button" id="upload_logo_button"><?php echo esc_html__('Select Logo', 'sports-court-designer'); ?></button>
+                        <button type="button" class="button" id="remove_logo_button" <?php echo $logo_id ? '' : 'style="display:none;"'; ?>><?php echo esc_html__('Remove Logo', 'sports-court-designer'); ?></button>
                         
-                        <p class="description"><?php echo esc_html__('Recommended size: 200x60px. Transparent PNG works best.', 'court-designer'); ?></p>
+                        <p class="description"><?php echo esc_html__('Recommended size: 200x60px. Transparent PNG works best.', 'sports-court-designer'); ?></p>
                     </td>
                 </tr>
             </table>
             
             <p class="submit">
-                <input type="submit" name="court_designer_save_settings" class="button-primary" value="<?php echo esc_attr__('Save Settings', 'court-designer'); ?>" />
+                <input type="submit" name="court_designer_save_settings" class="button-primary" value="<?php echo esc_attr__('Save Settings', 'sports-court-designer'); ?>" />
             </p>
         </div>
     </form>
     
     <div class="card">
-        <h2><?php echo esc_html__('Usage', 'court-designer'); ?></h2>
-        <h3><?php echo esc_html__('Shortcode', 'court-designer'); ?></h3>
-        <p><code>[court_designer type="tennis"]</code> - <?php echo esc_html__('Tennis court designer', 'court-designer'); ?></p>
-        <p><code>[court_designer type="basketball"]</code> - <?php echo esc_html__('Basketball court designer', 'court-designer'); ?></p>
-        <p><code>[court_designer type="pickleball"]</code> - <?php echo esc_html__('Pickleball court designer', 'court-designer'); ?></p>
+        <h2><?php echo esc_html__('Usage', 'sports-court-designer'); ?></h2>
+        <h3><?php echo esc_html__('Shortcode', 'sports-court-designer'); ?></h3>
+        <p><code>[court_designer type="tennis"]</code> - <?php echo esc_html__('Tennis court designer', 'sports-court-designer'); ?></p>
+        <p><code>[court_designer type="basketball"]</code> - <?php echo esc_html__('Basketball court designer', 'sports-court-designer'); ?></p>
+        <p><code>[court_designer type="pickleball"]</code> - <?php echo esc_html__('Pickleball court designer', 'sports-court-designer'); ?></p>
         
-        <h3><?php echo esc_html__('Gutenberg Block', 'court-designer'); ?></h3>
-        <p><?php echo esc_html__('Search for "Court Designer" in the block editor and select your court type.', 'court-designer'); ?></p>
+        <h3><?php echo esc_html__('Gutenberg Block', 'sports-court-designer'); ?></h3>
+        <p><?php echo esc_html__('Search for "Sports Court Designer" in the block editor and select your court type.', 'sports-court-designer'); ?></p>
     </div>
     
     <div class="card">
-        <h2><?php echo esc_html__('Available Colors', 'court-designer'); ?></h2>
-        <p><?php echo esc_html__('The following colors are available for court customization:', 'court-designer'); ?></p>
+        <h2><?php echo esc_html__('Available Colors', 'sports-court-designer'); ?></h2>
+        <p><?php echo esc_html__('The following colors are available for court customization:', 'sports-court-designer'); ?></p>
         <ul>
             <li>Ice Blue, Light Blue, Blue</li>
             <li>Light Green, Forest Green, Dark Green</li>
@@ -82,32 +82,32 @@ $logo_url = $logo_id ? wp_get_attachment_url($logo_id) : '';
             <li>Sandstone, Beige, Dove Gray</li>
             <li>Brown (ColorPlus fusion blend)</li>
         </ul>
-        <p class="description"><?php echo esc_html__('Colors can be customized by editing the colors.json file in the plugin assets/data directory.', 'court-designer'); ?></p>
+        <p class="description"><?php echo esc_html__('Colors can be customized by editing the colors.json file in the plugin assets/data directory.', 'sports-court-designer'); ?></p>
     </div>
     
     <div class="card">
-        <h2><?php echo esc_html__('Court Areas', 'court-designer'); ?></h2>
-        <h3><?php echo esc_html__('Tennis', 'court-designer'); ?></h3>
+        <h2><?php echo esc_html__('Court Areas', 'sports-court-designer'); ?></h2>
+        <h3><?php echo esc_html__('Tennis', 'sports-court-designer'); ?></h3>
         <ul>
-            <li><?php echo esc_html__('Court (inner play area)', 'court-designer'); ?></li>
-            <li><?php echo esc_html__('Border (outer area)', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Court (inner play area)', 'sports-court-designer'); ?></li>
+            <li><?php echo esc_html__('Border (outer area)', 'sports-court-designer'); ?></li>
         </ul>
         
-        <h3><?php echo esc_html__('Basketball', 'court-designer'); ?></h3>
+        <h3><?php echo esc_html__('Basketball', 'sports-court-designer'); ?></h3>
         <ul>
-            <li><?php echo esc_html__('Court', 'court-designer'); ?></li>
-            <li><?php echo esc_html__('Border', 'court-designer'); ?></li>
-            <li><?php echo esc_html__('3-Point Area', 'court-designer'); ?></li>
-            <li><?php echo esc_html__('Key', 'court-designer'); ?></li>
-            <li><?php echo esc_html__('Top of Key', 'court-designer'); ?></li>
-            <li><?php echo esc_html__('Center Court Circle', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Court', 'sports-court-designer'); ?></li>
+            <li><?php echo esc_html__('Border', 'sports-court-designer'); ?></li>
+            <li><?php echo esc_html__('3-Point Area', 'sports-court-designer'); ?></li>
+            <li><?php echo esc_html__('Key', 'sports-court-designer'); ?></li>
+            <li><?php echo esc_html__('Top of Key', 'sports-court-designer'); ?></li>
+            <li><?php echo esc_html__('Center Court Circle', 'sports-court-designer'); ?></li>
         </ul>
         
-        <h3><?php echo esc_html__('Pickleball', 'court-designer'); ?></h3>
+        <h3><?php echo esc_html__('Pickleball', 'sports-court-designer'); ?></h3>
         <ul>
-            <li><?php echo esc_html__('Court', 'court-designer'); ?></li>
-            <li><?php echo esc_html__('Border', 'court-designer'); ?></li>
-            <li><?php echo esc_html__('Non-Volley Zone', 'court-designer'); ?></li>
+            <li><?php echo esc_html__('Court', 'sports-court-designer'); ?></li>
+            <li><?php echo esc_html__('Border', 'sports-court-designer'); ?></li>
+            <li><?php echo esc_html__('Non-Volley Zone', 'sports-court-designer'); ?></li>
         </ul>
     </div>
 </div>
@@ -128,9 +128,9 @@ jQuery(document).ready(function($) {
         
         // Create the media frame
         mediaUploader = wp.media({
-            title: '<?php echo esc_js(__('Choose Logo', 'court-designer')); ?>',
+            title: '<?php echo esc_js(__('Choose Logo', 'sports-court-designer')); ?>',
             button: {
-                text: '<?php echo esc_js(__('Use this logo', 'court-designer')); ?>'
+                text: '<?php echo esc_js(__('Use this logo', 'sports-court-designer')); ?>'
             },
             multiple: false,
             library: {
