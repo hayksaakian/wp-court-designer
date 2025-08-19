@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.3] - 2024-08-19
+
+### Fixed
+- JavaScript enqueuing - moved inline scripts to separate admin-settings.js file
+- Properly enqueue admin scripts using wp_enqueue_script()
+- Pass translatable strings via wp_localize_script()
+
+### Changed
+- Removed screenshot files from plugin distribution (WordPress.org compliance)
+- Screenshots now only in SVN repository, not in plugin zip
+- Updated build script to explicitly exclude screenshots
+
 ## [1.3.2] - 2024-08-10
 
 ### Fixed

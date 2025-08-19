@@ -3,7 +3,7 @@ Contributors: hayksaakian
 Tags: sports, court, tennis, basketball, pickleball
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -111,6 +111,13 @@ No, all rendering is done client-side. The plugin does not make any external API
 4. Admin settings page for company logo upload
 
 == Changelog ==
+
+= 1.3.3 =
+* Fixed JavaScript enqueuing - moved inline scripts to separate file
+* Properly enqueue admin scripts using wp_enqueue_script()
+* Pass translatable strings via wp_localize_script()
+* Removed screenshot files from plugin (for WordPress.org compliance)
+* Screenshots now only in SVN repository, not in plugin zip
 
 = 1.3.2 =
 * Fixed all WordPress.org Plugin Check errors
