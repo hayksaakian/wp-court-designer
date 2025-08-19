@@ -196,6 +196,21 @@ class CourtDesigner {
         }
         
         wp_enqueue_media();
+        
+        // Enqueue our admin settings script
+        wp_enqueue_script(
+            'court-designer-admin',
+            COURT_DESIGNER_URL . 'assets/js/admin-settings.js',
+            array('jquery', 'media-upload'),
+            COURT_DESIGNER_VERSION,
+            true
+        );
+        
+        // Localize script with translatable strings
+        wp_localize_script('court-designer-admin', 'courtDesignerAdmin', array(
+            'chooseLogoText' => __('Choose Logo', 'sports-court-designer'),
+            'useLogoText' => __('Use this logo', 'sports-court-designer')
+        ));
     }
 }
 

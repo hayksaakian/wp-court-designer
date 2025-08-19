@@ -12,6 +12,7 @@ rm -f "$ZIP_FILE"
 
 # Create zip with all plugin files
 # - Excludes git files, DS_Store, and development files
+# - Excludes screenshots (they go in SVN repo only)
 # - Files are added at root level (WordPress requirement)
 zip -r "$ZIP_FILE" . \
     -x "*.git*" \
@@ -21,7 +22,8 @@ zip -r "$ZIP_FILE" . \
     -x "test.html" \
     -x "*.log" \
     -x "*.bak" \
-    -x "*~"
+    -x "*~" \
+    -x "screenshot-*.png"
 
 echo "Plugin built: ${ZIP_FILE}"
 echo "Upload this file to WordPress Plugins → Add New → Upload Plugin"
