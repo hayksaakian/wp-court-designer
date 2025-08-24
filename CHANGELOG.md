@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2024-08-24
+
+### Added
+- Line color customization for all court types
+- White and Black colors added to palette
+- Filtered color palettes - different colors for lines vs fills
+- Lines only show specific colors (white, black, blues, greens, red, gray, yellow)
+- Fills exclude white and black from selection
+
+### Changed
+- Updated color palette to client's exact hex values
+- Tennis court dimensions updated to match shop drawings (120' x 60' total area)
+- Pickleball court margins increased for better proportions (64' x 40' total area)
+- Color swatches dynamically update based on selected area
+
+### Removed
+- LEED labels and references from color interface (per client request)
+
+### Fixed
+- Basketball court lines now all change color correctly
+- Pickleball court lines now all change color correctly
+- White color swatch now has border for visibility
+
 ## [1.3.3] - 2024-08-19
 
 ### Fixed

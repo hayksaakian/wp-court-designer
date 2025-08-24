@@ -3,7 +3,7 @@ Contributors: hayksaakian
 Tags: sports, court, tennis, basketball, pickleball
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 1.3.3
+Stable tag: 1.4.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -111,6 +111,17 @@ No, all rendering is done client-side. The plugin does not make any external API
 4. Admin settings page for company logo upload
 
 == Changelog ==
+
+= 1.4.0 =
+* Added line color customization for all court types
+* Added white and black colors to palette
+* Added filtered color palettes - different colors for lines vs fills
+* Updated color palette to client's exact hex values
+* Updated tennis court dimensions to match shop drawings
+* Improved pickleball court margins for better proportions
+* Removed LEED labels from interface (per client request)
+* Fixed basketball and pickleball court line color changes
+* Fixed white color swatch visibility with border
 
 = 1.3.3 =
 * Fixed JavaScript enqueuing - moved inline scripts to separate file

@@ -21,32 +21,35 @@
         
         getAreasForCourt(courtType) {
             const areaMap = {
-                tennis: ['court', 'border'],
-                basketball: ['court', 'border', 'threePointArea', 'key', 'topOfKey', 'centerCourtCircle'],
-                pickleball: ['court', 'border', 'nonVolleyZone']
+                tennis: ['court', 'border', 'lines'],
+                basketball: ['court', 'border', 'threePointArea', 'key', 'topOfKey', 'centerCourtCircle', 'lines'],
+                pickleball: ['court', 'border', 'nonVolleyZone', 'lines']
             };
             return areaMap[courtType] || areaMap.tennis;
         }
         
         initializeDefaultColors() {
-            // Set better default colors for each court type
+            // Set better default colors for each court type using client's exact colors
             const defaultColors = {
                 tennis: {
-                    court: '#0066CC', // Blue
-                    border: '#228B22'  // Forest Green
+                    court: '#2e3c5c', // Blue
+                    border: '#465138',  // Forest Green
+                    lines: '#ffffff' // White lines (primary sport)
                 },
                 basketball: {
-                    court: '#D2691E', // Tan/Wood color (Sandstone-like)
-                    border: '#228B22', // Forest Green
-                    threePointArea: '#CC0000', // Red
-                    key: '#0066CC', // Blue
-                    topOfKey: '#663399', // Tournament Purple
-                    centerCourtCircle: '#800000' // Maroon
+                    court: '#c1a872', // Sandstone
+                    border: '#465138', // Forest Green
+                    threePointArea: '#6c3838', // Red
+                    key: '#2e3c5c', // Blue
+                    topOfKey: '#423d61', // Tournament Purple
+                    centerCourtCircle: '#583838', // Maroon
+                    lines: '#ffffff' // White lines
                 },
                 pickleball: {
-                    court: '#0066CC', // Blue
-                    border: '#228B22', // Forest Green
-                    nonVolleyZone: '#FFD700' // Yellow (for kitchen)
+                    court: '#2e3c5c', // Blue
+                    border: '#465138', // Forest Green
+                    nonVolleyZone: '#ebc553', // Yellow (for kitchen)
+                    lines: '#ffffff' // White lines (primary sport)
                 }
             };
             
@@ -80,6 +83,7 @@
                     this.updateLogo();
                     this.updateColorIndicators();
                     this.updateCurrentColorName();
+                    this.rebuildColorPalette();
                     this.updateSelectedSwatch();
                 })
                 .catch(error => {
@@ -136,9 +140,64 @@
                 tab.classList.toggle('active', tab.dataset.area === area);
             });
             
+            // Rebuild color palette with filtered colors
+            this.rebuildColorPalette();
+            
             // Update selected color swatch and current color name
             this.updateSelectedSwatch();
             this.updateCurrentColorName();
+        }
+        
+        getFilteredColors() {
+            // Define which colors are allowed for lines
+            const lineColors = [
+                'White', 'Black', 
+                'Light Blue', 'Blue', 
+                'Light Green', 'Forest Green', 'Dark Green',
+                'Red', 'Gray', 'Dove Gray', 'Yellow'
+            ];
+            
+            if (this.currentArea === 'lines') {
+                // For lines, only show specific colors
+                return this.colors.filter(color => lineColors.includes(color.name));
+            } else {
+                // For fills, exclude white and black
+                return this.colors.filter(color => 
+                    color.name !== 'White' && color.name !== 'Black'
+                );
+            }
+        }
+        
+        rebuildColorPalette() {
+            const swatchContainer = this.container.querySelector('.color-swatches');
+            if (!swatchContainer) return;
+            
+            swatchContainer.innerHTML = '';
+            const filteredColors = this.getFilteredColors();
+            
+            filteredColors.forEach(color => {
+                const swatch = document.createElement('div');
+                swatch.className = 'color-swatch';
+                swatch.dataset.color = color.hex;
+                swatch.title = color.name;
+                
+                const inner = document.createElement('div');
+                inner.className = 'color-swatch-inner';
+                inner.style.backgroundColor = color.hex;
+                
+                const tooltip = document.createElement('span');
+                tooltip.className = 'color-name-tooltip';
+                tooltip.textContent = color.name;
+                
+                swatch.appendChild(inner);
+                swatch.appendChild(tooltip);
+                swatchContainer.appendChild(swatch);
+                
+                // Add click handler
+                swatch.addEventListener('click', () => {
+                    this.selectColor(color.hex);
+                });
+            });
         }
         
         selectColor(colorHex) {
@@ -183,7 +242,16 @@
             Object.keys(this.colorState).forEach(area => {
                 const element = this.svgElement.querySelector(`#${area}`);
                 if (element) {
-                    if (element.tagName === 'g') {
+                    if (area === 'lines') {
+                        // For lines, apply stroke color instead of fill
+                        element.setAttribute('stroke', this.colorState[area]);
+                        // Also update stroke for all child elements
+                        element.querySelectorAll('*').forEach(child => {
+                            if (child.hasAttribute('stroke')) {
+                                child.setAttribute('stroke', this.colorState[area]);
+                            }
+                        });
+                    } else if (element.tagName === 'g') {
                         // For grouped elements, apply to all children
                         element.querySelectorAll('*').forEach(child => {
                             if (child.hasAttribute('fill')) {
@@ -213,6 +281,9 @@
             
             // Rebuild area tabs
             this.rebuildAreaTabs();
+            
+            // Rebuild color palette for the new court type
+            this.rebuildColorPalette();
         }
         
         rebuildAreaTabs() {

@@ -1,88 +1,74 @@
 [
     {
-        "name": "Ice Blue",
-        "hex": "#B8E0FF",
-        "leed": {"sri": 62, "credit": true}
-    },
-    {
-        "name": "Light Blue",
-        "hex": "#87CEEB",
-        "leed": null
-    },
-    {
-        "name": "Blue",
-        "hex": "#0066CC",
-        "leed": null
-    },
-    {
-        "name": "Light Green",
-        "hex": "#90EE90",
-        "leed": {"sri": 31, "credit": true}
-    },
-    {
-        "name": "Forest Green",
-        "hex": "#228B22",
-        "leed": null
-    },
-    {
-        "name": "Dark Green",
-        "hex": "#013220",
-        "leed": null
-    },
-    {
-        "name": "Tournament Purple",
-        "hex": "#663399",
-        "leed": null
+        "name": "White",
+        "hex": "#ffffff"
     },
     {
         "name": "Black",
-        "hex": "#000000",
-        "leed": null
+        "hex": "#000000"
     },
     {
-        "name": "Maroon",
-        "hex": "#800000",
-        "leed": null
+        "name": "Light Green",
+        "hex": "#3f5b2d"
     },
     {
-        "name": "Red",
-        "hex": "#CC0000",
-        "leed": {"sri": 36, "credit": true}
+        "name": "Forest Green",
+        "hex": "#465138"
     },
     {
-        "name": "Brite Red",
-        "hex": "#FF0000",
-        "leed": null
-    },
-    {
-        "name": "Orange",
-        "hex": "#FF6600",
-        "leed": null
-    },
-    {
-        "name": "Yellow",
-        "hex": "#FFD700",
-        "leed": null
-    },
-    {
-        "name": "Sandstone",
-        "hex": "#C8B88B",
-        "leed": {"sri": 46, "credit": true}
+        "name": "Dark Green",
+        "hex": "#3b4133"
     },
     {
         "name": "Beige",
-        "hex": "#F5F5DC",
-        "leed": null
+        "hex": "#826e59"
+    },
+    {
+        "name": "Red",
+        "hex": "#6c3838"
+    },
+    {
+        "name": "Sandstone",
+        "hex": "#c1a872"
+    },
+    {
+        "name": "Maroon",
+        "hex": "#583838"
+    },
+    {
+        "name": "Tournament Purple",
+        "hex": "#423d61"
+    },
+    {
+        "name": "Gray",
+        "hex": "#616168"
+    },
+    {
+        "name": "Blue",
+        "hex": "#2e3c5c"
+    },
+    {
+        "name": "Light Blue",
+        "hex": "#567191"
     },
     {
         "name": "Dove Gray",
-        "hex": "#999999",
-        "leed": {"sri": 33, "credit": true}
+        "hex": "#999999"
     },
     {
-        "name": "Brown",
-        "hex": "#654321",
-        "leed": null,
-        "note": "ColorPlus fusion blend (50% Maroon + 50% Light Green)"
+        "name": "Ice Blue",
+        "hex": "#71a9c9"
+    },
+    {
+        "name": "Yellow",
+        "hex": "#ebc553"
+    },
+    {
+        "name": "Orange",
+        "hex": "#e55b33"
+    },
+    {
+        "name": "Brite Red",
+        "hex": "#cc372c"
     }
 ]

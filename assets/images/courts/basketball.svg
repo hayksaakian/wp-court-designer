@@ -3,7 +3,7 @@
   <rect id="border" x="0" y="0" width="2900" height="1800" fill="#228B22" stroke="none"/>
   
   <!-- Court (main playing surface) - rotated 90 degrees -->
-  <rect id="court" x="50" y="50" width="2800" height="1500" fill="#D2691E" stroke="white" stroke-width="10"/>
+  <rect id="court" x="50" y="50" width="2800" height="1500" fill="#D2691E" stroke="none"/>
   
   <!-- 3-Point Areas - the curved areas between the 3-point line and the key, extending to court edges -->
   <g id="threePointArea">
@@ -16,30 +16,44 @@
   <!-- Keys (paint areas near baskets) -->
   <g id="key">
     <!-- Left key - width should match free throw circle diameter (360px) -->
-    <rect x="50" y="620" width="580" height="360" fill="#0066CC" stroke="white" stroke-width="10"/>
+    <rect x="50" y="620" width="580" height="360" fill="#0066CC" stroke="none"/>
     <!-- Right key -->
-    <rect x="2270" y="620" width="580" height="360" fill="#0066CC" stroke="white" stroke-width="10"/>
+    <rect x="2270" y="620" width="580" height="360" fill="#0066CC" stroke="none"/>
   </g>
   
   <!-- Top of Key circles (free throw semicircles) -->
   <g id="topOfKey">
     <!-- Left semicircle - connects to key at x=630 -->
-    <path d="M 630 620 A 180 180 0 0 1 630 980" fill="#663399" stroke="white" stroke-width="10"/>
+    <path d="M 630 620 A 180 180 0 0 1 630 980" fill="#663399" stroke="none"/>
     <!-- Right semicircle - connects to key at x=2270 -->
-    <path d="M 2270 980 A 180 180 0 0 1 2270 620" fill="#663399" stroke="white" stroke-width="10"/>
+    <path d="M 2270 980 A 180 180 0 0 1 2270 620" fill="#663399" stroke="none"/>
   </g>
   
   <!-- Center Court Circle -->
-  <circle id="centerCourtCircle" cx="1450" cy="800" r="180" fill="#800000" stroke="white" stroke-width="10"/>
+  <circle id="centerCourtCircle" cx="1450" cy="800" r="180" fill="#800000" stroke="none"/>
   
   <!-- Court lines -->
-  <g stroke="white" stroke-width="10" fill="none">
+  <g id="lines" stroke="white" stroke-width="10" fill="none">
+    <!-- Court outline -->
+    <rect x="50" y="50" width="2800" height="1500"/>
+    
     <!-- Center line -->
     <line x1="1450" y1="50" x2="1450" y2="1550"/>
+    
+    <!-- Key outlines -->
+    <rect x="50" y="620" width="580" height="360"/>
+    <rect x="2270" y="620" width="580" height="360"/>
+    
+    <!-- Top of key semicircles -->
+    <path d="M 630 620 A 180 180 0 0 1 630 980"/>
+    <path d="M 2270 980 A 180 180 0 0 1 2270 620"/>
     
     <!-- Free throw circles -->
     <circle cx="630" cy="800" r="180"/>
     <circle cx="2270" cy="800" r="180"/>
+    
+    <!-- Center court circle -->
+    <circle cx="1450" cy="800" r="180"/>
     
     <!-- 3-point lines (rotated from vertical to horizontal) -->
     <!-- Left 3-point line -->

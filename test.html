@@ -84,6 +84,7 @@
             strings: {
                 court: 'Court',
                 border: 'Border',
+                lines: 'Lines',
                 threePointArea: '3-Point Area',
                 key: 'Key',
                 topOfKey: 'Top of Key',
@@ -113,13 +114,6 @@
                     const inner = document.createElement('div');
                     inner.className = 'color-swatch-inner';
                     inner.style.backgroundColor = color.hex;
-                    
-                    if (color.leed && color.leed.credit) {
-                        const leed = document.createElement('span');
-                        leed.className = 'color-swatch-leed';
-                        leed.textContent = 'LEED';
-                        inner.appendChild(leed);
-                    }
                     
                     const tooltip = document.createElement('span');
                     tooltip.className = 'color-name-tooltip';

@@ -81,9 +81,6 @@ $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_a
                     <?php foreach ($colors as $color) : ?>
                         <div class="color-swatch" data-color="<?php echo esc_attr($color['hex']); ?>" title="<?php echo esc_attr($color['name']); ?>">
                             <div class="color-swatch-inner" style="background-color: <?php echo esc_attr($color['hex']); ?>;">
-                                <?php if (!empty($color['leed']) && $color['leed']['credit']) : ?>
-                                    <span class="color-swatch-leed">LEED</span>
-                                <?php endif; ?>
                             </div>
                             <span class="color-name-tooltip"><?php echo esc_html($color['name']); ?></span>
                         </div>
