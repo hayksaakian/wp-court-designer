@@ -23,7 +23,13 @@
             const areaMap = {
                 tennis: ['court', 'border', 'lines'],
                 basketball: ['court', 'border', 'threePointArea', 'key', 'topOfKey', 'centerCourtCircle', 'lines'],
-                pickleball: ['court', 'border', 'nonVolleyZone', 'lines']
+                pickleball: ['court', 'border', 'nonVolleyZone', 'lines'],
+                // Combo courts - Tennis + Pickleball
+                'tennis-1pb': ['court', 'border', 'primaryLines', 'secondaryLines'],
+                'tennis-2pb': ['court', 'border', 'primaryLines', 'secondaryLines'],
+                'tennis-4pb': ['court', 'border', 'primaryLines', 'secondaryLines'],
+                '2pb-tennis': ['court', 'border', 'primaryLines', 'secondaryLines'],
+                '4pb-tennis': ['court', 'border', 'primaryLines', 'secondaryLines']
             };
             return areaMap[courtType] || areaMap.tennis;
         }
@@ -50,6 +56,38 @@
                     border: '#465138', // Forest Green
                     nonVolleyZone: '#ebc553', // Yellow (for kitchen)
                     lines: '#ffffff' // White lines (primary sport)
+                },
+                // Tennis primary combo courts
+                'tennis-1pb': {
+                    court: '#2e3c5c', // Blue
+                    border: '#465138', // Forest Green
+                    primaryLines: '#ffffff', // White for tennis
+                    secondaryLines: '#ebc553' // Yellow for pickleball
+                },
+                'tennis-2pb': {
+                    court: '#2e3c5c', // Blue
+                    border: '#465138', // Forest Green
+                    primaryLines: '#ffffff', // White for tennis
+                    secondaryLines: '#ebc553' // Yellow for pickleball
+                },
+                'tennis-4pb': {
+                    court: '#2e3c5c', // Blue
+                    border: '#465138', // Forest Green
+                    primaryLines: '#ffffff', // White for tennis
+                    secondaryLines: '#ebc553' // Yellow for pickleball
+                },
+                // Pickleball primary combo courts
+                '2pb-tennis': {
+                    court: '#2e3c5c', // Blue
+                    border: '#465138', // Forest Green
+                    primaryLines: '#ffffff', // White for pickleball
+                    secondaryLines: '#67a3d9' // Light Blue for tennis
+                },
+                '4pb-tennis': {
+                    court: '#2e3c5c', // Blue
+                    border: '#465138', // Forest Green
+                    primaryLines: '#ffffff', // White for pickleball
+                    secondaryLines: '#67a3d9' // Light Blue for tennis
                 }
             };
             
@@ -157,8 +195,8 @@
                 'Red', 'Gray', 'Dove Gray', 'Yellow'
             ];
             
-            if (this.currentArea === 'lines') {
-                // For lines, only show specific colors
+            if (this.currentArea === 'lines' || this.currentArea === 'primaryLines' || this.currentArea === 'secondaryLines') {
+                // For any type of lines, only show specific colors
                 return this.colors.filter(color => lineColors.includes(color.name));
             } else {
                 // For fills, exclude white and black
@@ -242,8 +280,8 @@
             Object.keys(this.colorState).forEach(area => {
                 const element = this.svgElement.querySelector(`#${area}`);
                 if (element) {
-                    if (area === 'lines') {
-                        // For lines, apply stroke color instead of fill
+                    if (area === 'lines' || area === 'primaryLines' || area === 'secondaryLines') {
+                        // For any type of lines, apply stroke color instead of fill
                         element.setAttribute('stroke', this.colorState[area]);
                         // Also update stroke for all child elements
                         element.querySelectorAll('*').forEach(child => {

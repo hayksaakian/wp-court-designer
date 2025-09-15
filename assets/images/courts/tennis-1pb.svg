@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <!-- Border (outer area) - 120' x 60' -->
+  <rect id="border" x="0" y="0" width="1200" height="600" fill="#228B22" stroke="none"/>
+  
+  <!-- Court (inner play area) - 78' x 36' = 780 x 360 units -->
+  <!-- Margins: 21' on ends = 210 units, 12' on sides = 120 units -->
+  <rect id="court" x="210" y="120" width="780" height="360" fill="#0066CC" stroke="none"/>
+  
+  <!-- Primary Lines - Tennis (white by default) -->
+  <g id="primaryLines" stroke="white" stroke-width="3" fill="none">
+    <!-- Court outline -->
+    <rect x="210" y="120" width="780" height="360"/>
+    
+    <!-- Singles sidelines (27' width = 270 units, so 45 units in from doubles) -->
+    <line x1="210" y1="165" x2="990" y2="165"/>
+    <line x1="210" y1="435" x2="990" y2="435"/>
+    
+    <!-- Service lines (21' from net = 210 units) -->
+    <line x1="390" y1="165" x2="390" y2="435"/>
+    <line x1="810" y1="165" x2="810" y2="435"/>
+    
+    <!-- Net line (center at 39' = 390 units from baseline) -->
+    <line x1="600" y1="120" x2="600" y2="480" stroke-width="4"/>
+    
+    <!-- Center service line (divides service boxes) -->
+    <line x1="390" y1="300" x2="810" y2="300"/>
+    
+    <!-- Center mark on baselines (6" marks) -->
+    <line x1="210" y1="295" x2="210" y2="305" stroke-width="2"/>
+    <line x1="990" y1="295" x2="990" y2="305" stroke-width="2"/>
+  </g>
+  
+  <!-- Secondary Lines - Pickleball (yellow by default) -->
+  <!-- Pickleball court: 44' x 20' = 440 x 200 units, centered within tennis court -->
+  <g id="secondaryLines" stroke="#FFFF00" stroke-width="2" fill="none" opacity="0.8">
+    <!-- Pickleball court outline (centered: x=380 to 820, y=200 to 400) -->
+    <rect x="380" y="200" width="440" height="200"/>
+    
+    <!-- Pickleball net line (center) -->
+    <line x1="600" y1="200" x2="600" y2="400" stroke-width="3"/>
+    
+    <!-- Non-volley zones (7' from net = 70 units on each side) -->
+    <line x1="530" y1="200" x2="530" y2="400"/>
+    <line x1="670" y1="200" x2="670" y2="400"/>
+    
+    <!-- Service center line (divides each half) -->
+    <line x1="380" y1="300" x2="530" y2="300"/>
+    <line x1="670" y1="300" x2="820" y2="300"/>
+    
+    <!-- Baseline center marks -->
+    <line x1="380" y1="295" x2="380" y2="305" stroke-width="2"/>
+    <line x1="820" y1="295" x2="820" y2="305" stroke-width="2"/>
+  </g>
+  
+  <!-- Net post indicators for tennis -->
+  <circle cx="600" cy="120" r="4" fill="white"/>
+  <circle cx="600" cy="480" r="4" fill="white"/>
+  
+  <!-- Net post indicators for pickleball -->
+  <circle cx="600" cy="200" r="3" fill="#FFFF00" opacity="0.8"/>
+  <circle cx="600" cy="400" r="3" fill="#FFFF00" opacity="0.8"/>
+  
+  <!-- Logo area below court -->
+  <g id="logoArea">
+    <rect id="logoBackground" x="0" y="500" width="1200" height="100" fill="#228B22"/>
+    <image id="courtLogo" x="500" y="510" width="200" height="80" href="" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+</svg>

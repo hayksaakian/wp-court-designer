@@ -3,7 +3,7 @@
  * Plugin Name: Sports Court Designer
  * Plugin URI: https://github.com/HaykSaakian/wp-court-designer
  * Description: Interactive sports court designer for tennis, basketball, and pickleball courts with customizable colors
- * Version: 1.4.0
+ * Version: 1.5.0
  * Author: Hayk Saakian
  * Author URI: https://github.com/HaykSaakian
  * License: GPL v2 or later
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('COURT_DESIGNER_VERSION', '1.4.0');
+define('COURT_DESIGNER_VERSION', '1.5.0');
 define('COURT_DESIGNER_URL', plugin_dir_url(__FILE__));
 define('COURT_DESIGNER_PATH', plugin_dir_path(__FILE__));
 
@@ -109,6 +109,8 @@ class CourtDesigner {
                     'topOfKey' => __('Top of Key', 'sports-court-designer'),
                     'centerCourtCircle' => __('Center Court Circle', 'sports-court-designer'),
                     'nonVolleyZone' => __('Non-Volley Zone', 'sports-court-designer'),
+                    'primaryLines' => __('Primary Lines', 'sports-court-designer'),
+                    'secondaryLines' => __('Secondary Lines', 'sports-court-designer'),
                     'reset' => __('Reset', 'sports-court-designer'),
                     'changeCourt' => __('Change Court', 'sports-court-designer'),
                     'download' => __('Download Design', 'sports-court-designer'),
@@ -123,7 +125,13 @@ class CourtDesigner {
             'type' => 'tennis'
         ), $atts, 'court_designer');
         
-        if (!in_array($atts['type'], array('tennis', 'basketball', 'pickleball'))) {
+        $valid_types = array(
+            'tennis', 'basketball', 'pickleball',
+            'tennis-1pb', 'tennis-2pb', 'tennis-4pb',
+            '2pb-tennis'
+        );
+        
+        if (!in_array($atts['type'], $valid_types)) {
             $atts['type'] = 'tennis';
         }
         

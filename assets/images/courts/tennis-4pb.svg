@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <!-- Border (outer area) - 120' x 60' -->
+  <rect id="border" x="0" y="0" width="1200" height="600" fill="#228B22" stroke="none"/>
+  
+  <!-- Court (inner play area) - 78' x 36' = 780 x 360 units -->
+  <rect id="court" x="210" y="120" width="780" height="360" fill="#0066CC" stroke="none"/>
+  
+  <!-- Primary Lines - Tennis (white by default) -->
+  <g id="primaryLines" stroke="white" stroke-width="3" fill="none">
+    <!-- Court outline -->
+    <rect x="210" y="120" width="780" height="360"/>
+    
+    <!-- Singles sidelines -->
+    <line x1="210" y1="165" x2="990" y2="165"/>
+    <line x1="210" y1="435" x2="990" y2="435"/>
+    
+    <!-- Service lines -->
+    <line x1="390" y1="165" x2="390" y2="435"/>
+    <line x1="810" y1="165" x2="810" y2="435"/>
+    
+    <!-- Net line -->
+    <line x1="600" y1="120" x2="600" y2="480" stroke-width="4"/>
+    
+    <!-- Center service line -->
+    <line x1="390" y1="300" x2="810" y2="300"/>
+    
+    <!-- Center marks -->
+    <line x1="210" y1="295" x2="210" y2="305" stroke-width="2"/>
+    <line x1="990" y1="295" x2="990" y2="305" stroke-width="2"/>
+  </g>
+  
+  <!-- Secondary Lines - 4 Pickleball courts in 2x2 grid -->
+  <!-- Using same positioning strategy as 2pb: courts extend beyond tennis boundaries -->
+  <!-- Each court scaled to 350 x 160 (like in 2pb, slightly smaller than 1pb to fit 4) -->
+  <g id="secondaryLines" stroke="#FFFF00" stroke-width="2" fill="none" opacity="0.8">
+    <!-- Top-left Pickleball court -->
+    <!-- Net at x=308 (12.5% position), positioned higher -->
+    <rect x="133" y="80" width="350" height="160"/>
+    
+    <!-- Top-left court net line -->
+    <line x1="308" y1="80" x2="308" y2="240" stroke-width="3"/>
+    
+    <!-- Top-left court non-volley zones (56 units from net) -->
+    <line x1="252" y1="80" x2="252" y2="240"/>
+    <line x1="364" y1="80" x2="364" y2="240"/>
+    
+    <!-- Top-left court service center lines -->
+    <line x1="133" y1="160" x2="252" y2="160"/>
+    <line x1="364" y1="160" x2="483" y2="160"/>
+    
+    <!-- Top-right Pickleball court -->
+    <!-- Net at x=893 (87.5% position), positioned higher -->
+    <rect x="718" y="80" width="350" height="160"/>
+    
+    <!-- Top-right court net line -->
+    <line x1="893" y1="80" x2="893" y2="240" stroke-width="3"/>
+    
+    <!-- Top-right court non-volley zones -->
+    <line x1="837" y1="80" x2="837" y2="240"/>
+    <line x1="949" y1="80" x2="949" y2="240"/>
+    
+    <!-- Top-right court service center lines -->
+    <line x1="718" y1="160" x2="837" y2="160"/>
+    <line x1="949" y1="160" x2="1068" y2="160"/>
+    
+    <!-- Bottom-left Pickleball court -->
+    <!-- Net at x=308 (12.5% position), positioned lower -->
+    <rect x="133" y="360" width="350" height="160"/>
+    
+    <!-- Bottom-left court net line -->
+    <line x1="308" y1="360" x2="308" y2="520" stroke-width="3"/>
+    
+    <!-- Bottom-left court non-volley zones -->
+    <line x1="252" y1="360" x2="252" y2="520"/>
+    <line x1="364" y1="360" x2="364" y2="520"/>
+    
+    <!-- Bottom-left court service center lines -->
+    <line x1="133" y1="440" x2="252" y2="440"/>
+    <line x1="364" y1="440" x2="483" y2="440"/>
+    
+    <!-- Bottom-right Pickleball court -->
+    <!-- Net at x=893 (87.5% position), positioned lower -->
+    <rect x="718" y="360" width="350" height="160"/>
+    
+    <!-- Bottom-right court net line -->
+    <line x1="893" y1="360" x2="893" y2="520" stroke-width="3"/>
+    
+    <!-- Bottom-right court non-volley zones -->
+    <line x1="837" y1="360" x2="837" y2="520"/>
+    <line x1="949" y1="360" x2="949" y2="520"/>
+    
+    <!-- Bottom-right court service center lines -->
+    <line x1="718" y1="440" x2="837" y2="440"/>
+    <line x1="949" y1="440" x2="1068" y2="440"/>
+  </g>
+  
+  <!-- Net post indicators for tennis -->
+  <circle cx="600" cy="120" r="4" fill="white"/>
+  <circle cx="600" cy="480" r="4" fill="white"/>
+  
+  <!-- Net post indicators for pickleball courts -->
+  <!-- Top courts -->
+  <circle cx="308" cy="80" r="3" fill="#FFFF00" opacity="0.8"/>
+  <circle cx="308" cy="240" r="3" fill="#FFFF00" opacity="0.8"/>
+  <circle cx="893" cy="80" r="3" fill="#FFFF00" opacity="0.8"/>
+  <circle cx="893" cy="240" r="3" fill="#FFFF00" opacity="0.8"/>
+  <!-- Bottom courts -->
+  <circle cx="308" cy="360" r="3" fill="#FFFF00" opacity="0.8"/>
+  <circle cx="308" cy="520" r="3" fill="#FFFF00" opacity="0.8"/>
+  <circle cx="893" cy="360" r="3" fill="#FFFF00" opacity="0.8"/>
+  <circle cx="893" cy="520" r="3" fill="#FFFF00" opacity="0.8"/>
+  
+  <!-- Logo area moved below pickleball courts -->
+  <g id="logoArea">
+    <rect id="logoBackground" x="0" y="530" width="1200" height="70" fill="#228B22"/>
+    <image id="courtLogo" x="500" y="540" width="200" height="50" href="" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+</svg>

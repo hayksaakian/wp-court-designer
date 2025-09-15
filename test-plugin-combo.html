@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Combo Courts - Plugin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .test-note {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Combo Courts Test - Plugin Interface</h1>
+        <div class="test-note">
+            <strong>Note:</strong> This is a test page to verify combo court functionality. 
+            Use the dropdown to select different combo court options.
+        </div>
+
+        <!-- Simulate the plugin template structure -->
+        <div class="court-designer" data-court-type="tennis-2pb">
+            <div class="court-designer-header">
+                <h2 class="court-designer-title">Sports Court Designer</h2>
+                <div class="court-type-selector">
+                    <select id="court-type-select">
+                        <option value="tennis">Tennis</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="pickleball">Pickleball</option>
+                        <optgroup label="Combo Courts">
+                            <option value="tennis-1pb">Tennis + 1 Pickleball</option>
+                            <option value="tennis-2pb" selected>Tennis + 2 Pickleball</option>
+                            <option value="tennis-4pb">Tennis + 4 Pickleball</option>
+                            <option value="2pb-tennis">2 Pickleball + Tennis</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="court-designer-container">
+                <div class="court-designer-preview">
+                    <!-- SVG will be loaded here by JavaScript -->
+                </div>
+                
+                <div class="court-designer-controls">
+                    <div class="area-selector">
+                        <h3 class="area-selector-title">Select Area to Color</h3>
+                        <div class="area-tabs">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="color-palette">
+                        <h3 class="color-palette-title">
+                            Choose a Color
+                            <span class="current-color-name"></span>
+                        </h3>
+                        <div class="color-swatches">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary btn-reset">Reset Colors</button>
+                        <button class="btn btn-success btn-download">Download Design</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock the WordPress data that would normally be localized
+        window.courtDesignerData = {
+            pluginUrl: './',
+            logoUrl: '',
+            colors: [
+                {hex: '#67a3d9', name: 'Ice Blue'},
+                {hex: '#67a3d9', name: 'Light Blue'},
+                {hex: '#2e3c5c', name: 'Blue'},
+                {hex: '#89a574', name: 'Light Green'},
+                {hex: '#465138', name: 'Forest Green'},
+                {hex: '#3a5133', name: 'Dark Green'},
+                {hex: '#423d61', name: 'Tournament Purple'},
+                {hex: '#000000', name: 'Black'},
+                {hex: '#583838', name: 'Maroon'},
+                {hex: '#6c3838', name: 'Red'},
+                {hex: '#e56e6e', name: 'Brite Red'},
+                {hex: '#de7b31', name: 'Orange'},
+                {hex: '#ebc553', name: 'Yellow'},
+                {hex: '#c1a872', name: 'Sandstone'},
+                {hex: '#c0b9a1', name: 'Beige'},
+                {hex: '#b5b5b5', name: 'Dove Gray'},
+                {hex: '#4f4146', name: 'Brown'}
+            ],
+            strings: {
+                court: 'Court',
+                border: 'Border',
+                lines: 'Lines',
+                primaryLines: 'Primary Lines',
+                secondaryLines: 'Secondary Lines',
+                threePointArea: '3-Point Area',
+                key: 'Key',
+                topOfKey: 'Top of Key',
+                centerCourtCircle: 'Center Court Circle',
+                nonVolleyZone: 'Non-Volley Zone',
+                reset: 'Reset',
+                changeCourt: 'Change Court',
+                download: 'Download Design'
+            }
+        };
+    </script>
+    <script src="assets/js/designer.js"></script>
+</body>
+</html>
