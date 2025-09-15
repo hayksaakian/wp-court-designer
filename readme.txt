@@ -3,12 +3,12 @@ Contributors: hayksaakian
 Tags: sports, court, tennis, basketball, pickleball
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 1.4.0
+Stable tag: 1.5.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Interactive sports court designer for tennis, basketball, and pickleball courts with customizable colors for construction companies.
+Interactive sports court designer for tennis, basketball, pickleball, and combo courts with customizable colors for construction companies.
 
 == Description ==
 
@@ -111,6 +111,21 @@ No, all rendering is done client-side. The plugin does not make any external API
 4. Admin settings page for company logo upload
 
 == Changelog ==
+
+= 1.5.1 =
+* Fixed area selector text visibility issue on sites with global white text styles
+* Improved CSS specificity to prevent theme/page builder style conflicts
+* Added explicit text colors to all interactive elements
+* Enhanced button hover states to maintain proper text colors
+
+= 1.5.0 =
+* Added combo court support for multi-sport facilities
+* New court types: Tennis + 1 Pickleball, Tennis + 2 Pickleball, Tennis + 4 Pickleball
+* Added 2 Pickleball + Tennis option (pickleball primary)
+* Implemented primary/secondary line coloring system
+* Enhanced UI with organized combo court dropdown
+* Added support for customizing overlapping court lines
+* Improved court area color filtering based on selection
 
 = 1.4.0 =
 * Added line color customization for all court types

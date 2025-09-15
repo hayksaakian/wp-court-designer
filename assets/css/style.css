@@ -70,29 +70,30 @@
     padding: 4px 8px;
 }
 
-.area-selector {
+.court-designer .area-selector {
     margin-bottom: 20px;
 }
 
-.area-selector-title {
+.court-designer .area-selector-title {
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 10px;
     color: #555;
 }
 
-.area-tabs {
+.court-designer .area-tabs {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 15px;
 }
 
-.area-tab {
+.court-designer .area-tab {
     padding: 8px 16px;
     border: 2px solid #ddd;
     border-radius: 4px;
     background: white;
+    color: #333; /* Explicit text color to prevent inheritance */
     cursor: pointer;
     font-size: 14px;
     transition: all 0.2s;
@@ -101,17 +102,18 @@
     gap: 8px;
 }
 
-.area-tab:hover {
+.court-designer .area-tab:hover {
     background: #f0f0f0;
+    color: #333; /* Maintain dark text on hover */
 }
 
-.area-tab.active {
+.court-designer .area-tab.active {
     background: #0066CC;
     color: white;
     border-color: #0066CC;
 }
 
-.area-color-indicator {
+.court-designer .area-color-indicator {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -120,15 +122,15 @@
     background-color: #ddd;
 }
 
-.area-tab.active .area-color-indicator {
+.court-designer .area-tab.active .area-color-indicator {
     border-color: rgba(255,255,255,0.5);
 }
 
-.color-palette {
+.court-designer .color-palette {
     margin-bottom: 20px;
 }
 
-.color-palette-title {
+.court-designer .color-palette-title {
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 10px;
@@ -212,13 +214,13 @@
     opacity: 1;
 }
 
-.action-buttons {
+.court-designer .action-buttons {
     display: flex;
     gap: 10px;
     margin-top: 20px;
 }
 
-.btn {
+.court-designer .btn {
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -228,31 +230,34 @@
     transition: all 0.2s;
 }
 
-.btn-primary {
+.court-designer .btn-primary {
     background: #0066CC;
     color: white;
 }
 
-.btn-primary:hover {
+.court-designer .btn-primary:hover {
     background: #0052A3;
+    color: white;
 }
 
-.btn-secondary {
+.court-designer .btn-secondary {
     background: #6c757d;
     color: white;
 }
 
-.btn-secondary:hover {
+.court-designer .btn-secondary:hover {
     background: #5a6268;
+    color: white;
 }
 
-.btn-success {
+.court-designer .btn-success {
     background: #28a745;
     color: white;
 }
 
-.btn-success:hover {
+.court-designer .btn-success:hover {
     background: #218838;
+    color: white;
 }
 
 .color-note {
