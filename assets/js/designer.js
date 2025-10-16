@@ -29,7 +29,9 @@
                 'tennis-2pb': ['court', 'border', 'primaryLines', 'secondaryLines'],
                 'tennis-4pb': ['court', 'border', 'primaryLines', 'secondaryLines'],
                 '2pb-tennis': ['court', 'border', 'primaryLines', 'secondaryLines'],
-                '4pb-tennis': ['court', 'border', 'primaryLines', 'secondaryLines']
+                '4pb-tennis': ['court', 'border', 'primaryLines', 'secondaryLines'],
+                // Pickleball + Half Basketball
+                'pb-halfbasketball': ['court', 'border', 'nonVolleyZone', 'primaryLines', 'secondaryLines']
             };
             return areaMap[courtType] || areaMap.tennis;
         }
@@ -88,6 +90,14 @@
                     border: '#465138', // Forest Green
                     primaryLines: '#ffffff', // White for pickleball
                     secondaryLines: '#67a3d9' // Light Blue for tennis
+                },
+                // Pickleball + Half Basketball
+                'pb-halfbasketball': {
+                    court: '#2e3c5c', // Blue
+                    border: '#465138', // Forest Green
+                    nonVolleyZone: '#C0C0C0', // Gray for kitchen
+                    primaryLines: '#ffffff', // White for pickleball
+                    secondaryLines: '#00CED1' // Cyan for basketball
                 }
             };
             

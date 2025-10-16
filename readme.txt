@@ -3,7 +3,7 @@ Contributors: hayksaakian
 Tags: sports, court, tennis, basketball, pickleball
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 1.5.1
+Stable tag: 1.6.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -111,6 +111,13 @@ No, all rendering is done client-side. The plugin does not make any external API
 4. Admin settings page for company logo upload
 
 == Changelog ==
+
+= 1.6.0 =
+* Added Pickleball + Half-Court Basketball combo court
+* New court type allows pickleball primary with basketball half-court overlay
+* Includes colorable non-volley zone (kitchen area)
+* Basketball lines positioned as secondary overlay per shop drawing specifications
+* Enhanced combo court options for multi-sport facilities
 
 = 1.5.1 =
 * Fixed area selector text visibility issue on sites with global white text styles

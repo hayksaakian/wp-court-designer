@@ -36,6 +36,9 @@ desktop.ini
 *.zip
 *.tar.gz
 
+# Shop drawings (internal documentation, not for distribution)
+shop-drawings/
+
 # npm
 package-lock.json
 npm-debug.log

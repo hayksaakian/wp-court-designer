@@ -1,6 +1,6 @@
 {
   "name": "wp-court-designer",
-  "version": "1.0.0",
+  "version": "1.6.0",
   "description": "Interactive court designer for tennis, basketball, and pickleball courts with customizable colors",
   "main": "court-designer.php",
   "scripts": {

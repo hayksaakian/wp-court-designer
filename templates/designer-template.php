@@ -56,6 +56,13 @@ $court_areas = array(
         'primaryLines' => __('Pickleball Lines', 'sports-court-designer'),
         'secondaryLines' => __('Tennis Lines', 'sports-court-designer')
     ),
+    'pb-halfbasketball' => array(
+        'court' => __('Court', 'sports-court-designer'),
+        'border' => __('Border', 'sports-court-designer'),
+        'nonVolleyZone' => __('Non-Volley Zone', 'sports-court-designer'),
+        'primaryLines' => __('Pickleball Lines', 'sports-court-designer'),
+        'secondaryLines' => __('Basketball Lines', 'sports-court-designer')
+    ),
 );
 
 $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_areas['tennis'];
@@ -74,6 +81,7 @@ $areas = isset($court_areas[$court_type]) ? $court_areas[$court_type] : $court_a
                     <option value="tennis-2pb" <?php selected($court_type, 'tennis-2pb'); ?>><?php echo esc_html__('Tennis + 2 Pickleball', 'sports-court-designer'); ?></option>
                     <option value="tennis-4pb" <?php selected($court_type, 'tennis-4pb'); ?>><?php echo esc_html__('Tennis + 4 Pickleball', 'sports-court-designer'); ?></option>
                     <option value="2pb-tennis" <?php selected($court_type, '2pb-tennis'); ?>><?php echo esc_html__('2 Pickleball + Tennis', 'sports-court-designer'); ?></option>
+                    <option value="pb-halfbasketball" <?php selected($court_type, 'pb-halfbasketball'); ?>><?php echo esc_html__('Pickleball + Half Basketball', 'sports-court-designer'); ?></option>
                 </optgroup>
             </select>
         </div>

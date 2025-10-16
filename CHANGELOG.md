@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2025-10-15
+
+### Added
+- Pickleball + Half-Court Basketball combo court type (`pb-halfbasketball`)
+- New SVG court layout with accurate measurements from shop drawings
+- Gray non-volley zone (kitchen) as colorable area
+- Basketball half-court overlay with key, free throw line, 3-point arc, and basket
+- Support for 5 colorable areas: court, border, nonVolleyZone, primaryLines (pickleball), secondaryLines (basketball)
+- Default colors: Blue court, Forest Green border, Gray kitchen, White pickleball lines, Cyan basketball lines
+
+### Changed
+- Enhanced combo court dropdown with new "Pickleball + Half Basketball" option
+- Updated designer template to support non-volley zone in combo courts
+- Improved JavaScript area mapping for new court type
+
 ## [1.4.0] - 2024-08-24
 
 ### Added
