@@ -37,7 +37,10 @@ class CourtDesigner {
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('init', array($this, 'register_block'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
-        
+
+        // Elementor widget registration
+        add_action('elementor/widgets/register', array($this, 'register_elementor_widget'));
+
         // Add Settings link on plugins page
         add_filter('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'add_plugin_action_links'));
     }
@@ -67,8 +70,21 @@ class CourtDesigner {
     
     public function enqueue_scripts() {
         global $post;
-        
-        if (is_a($post, 'WP_Post') && (has_shortcode($post->post_content, 'court_designer') || has_block('court-designer/designer', $post))) {
+
+        // Check if we should enqueue scripts (shortcode, block, or Elementor)
+        $should_enqueue = false;
+
+        if (is_a($post, 'WP_Post')) {
+            $should_enqueue = has_shortcode($post->post_content, 'court_designer') ||
+                              has_block('court-designer/designer', $post);
+        }
+
+        // Also enqueue if Elementor is editing or rendering
+        if (did_action('elementor/loaded')) {
+            $should_enqueue = true;
+        }
+
+        if ($should_enqueue) {
             wp_enqueue_style(
                 'court-designer-style',
                 COURT_DESIGNER_URL . 'assets/css/style.css',
@@ -203,9 +219,9 @@ class CourtDesigner {
         if ('settings_page_court-designer-settings' !== $hook) {
             return;
         }
-        
+
         wp_enqueue_media();
-        
+
         // Enqueue our admin settings script
         wp_enqueue_script(
             'court-designer-admin',
@@ -214,12 +230,28 @@ class CourtDesigner {
             COURT_DESIGNER_VERSION,
             true
         );
-        
+
         // Localize script with translatable strings
         wp_localize_script('court-designer-admin', 'courtDesignerAdmin', array(
             'chooseLogoText' => __('Choose Logo', 'sports-court-designer'),
             'useLogoText' => __('Use this logo', 'sports-court-designer')
         ));
+    }
+
+    /**
+     * Register Elementor widget
+     */
+    public function register_elementor_widget($widgets_manager) {
+        // Check if Elementor is active
+        if (!did_action('elementor/loaded')) {
+            return;
+        }
+
+        // Include widget file
+        require_once COURT_DESIGNER_PATH . 'includes/elementor-widget.php';
+
+        // Register widget
+        $widgets_manager->register(new \Court_Designer_Elementor_Widget());
     }
 }
 
